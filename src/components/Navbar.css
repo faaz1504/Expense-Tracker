@@ -1,0 +1,33 @@
+.navstyle{
+    background-color:#4f46e5;
+    /* padding: 20px 0px; */
+}
+
+.brand {
+  color: rgb(255, 255, 255) !important;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.nav-links {
+  
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+}
+
+.nav-links .nav-link {
+  color: rgb(255, 255, 255) !important;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.nav-links .nav-link:hover {
+  color: #0e0f0f !important;
+}
+
+.nav-links .nav-link.active {
+  color: rgb(220, 54, 54) !important;
+  font-weight: 700;
+}
