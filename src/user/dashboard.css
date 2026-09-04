@@ -1,0 +1,197 @@
+.dashboard-page {
+  min-height: 100vh;
+  background-color: #f4f7fb;
+  padding: 40px 8%;
+}
+
+
+/* HEADER */
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.dashboard-header h2 {
+  margin: 0;
+}
+
+.welcome-text {
+  color: #777;
+  margin-bottom: 5px;
+}
+
+
+/* ADD BUTTON */
+
+.add-btn {
+  background-color: #4f46e5;
+  color: white;
+  text-decoration: none;
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.add-btn:hover {
+  background-color: #4338ca;
+  color: white;
+}
+
+
+/* SUMMARY CARDS */
+
+.summary-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.dashboard-card {
+  background-color: white;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+}
+
+.dashboard-card p {
+  color: #777;
+  margin-bottom: 8px;
+}
+
+.dashboard-card h2 {
+  margin-bottom: 5px;
+}
+
+.dashboard-card span {
+  font-size: 13px;
+  color: #999;
+}
+
+
+/* BALANCE */
+
+.balance-box {
+  background-color: #4f46e5;
+  color: white;
+}
+
+.balance-box p,
+.balance-box span {
+  color: #e4e4ff;
+}
+
+
+/* COLORS */
+
+.income-text {
+  color: green;
+  font-weight: 600;
+}
+
+.expense-text {
+  color: red;
+  font-weight: 600;
+}
+
+
+/* LOWER SECTION */
+
+.dashboard-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 25px;
+}
+
+
+/* TRANSACTIONS */
+
+.recent-transactions {
+  background-color: white;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.section-heading a {
+  text-decoration: none;
+  color: #4f46e5;
+}
+
+.transaction-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.transaction-row h4 {
+  margin: 0 0 5px;
+}
+
+.transaction-row p {
+  margin: 0;
+  color: #888;
+  font-size: 14px;
+}
+
+
+/* SPENDING SUMMARY */
+
+.spending-summary {
+  background-color: white;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+}
+
+.spending-summary h3 {
+  margin-bottom: 20px;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid #eee;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+
+  .summary-container {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-content {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .dashboard-page {
+    padding: 25px 20px;
+  }
+
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+}

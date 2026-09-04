@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import './dashboard.css'
 
 function UserDashboard(){
 
@@ -14,7 +15,7 @@ function UserDashboard(){
           <h2>Manage your money wisely</h2>
         </div>
 
-        <Link to="/add-transaction" className="add-btn">
+        <Link to="/Add-transactions" className="add-btn">
           + Add Transaction
         </Link>
       </div>
@@ -47,7 +48,7 @@ function UserDashboard(){
       </div>
 
 
-      {/* MAIN SECTION */}
+      
 
       <div className="dashboard-content">
 

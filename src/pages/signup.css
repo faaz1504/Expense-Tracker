@@ -70,3 +70,20 @@
   font-size: 13px;
   margin-top: 5px;
 }
+
+.signup-link {
+  text-align: center;
+  margin-top: 18px;
+  font-size: 14px;
+  color: #666;
+}
+
+.signup-link a {
+  color: #4f46e5;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.signup-link a:hover {
+  text-decoration: underline;
+}

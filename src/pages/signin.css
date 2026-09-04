@@ -1,16 +1,17 @@
 .signin-page {
-  min-height: 90vh;
+  min-height: 80vh;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #f4f7fb;
+  padding: 20px;
 }
 
 .signin-card {
   width: 100%;
-  max-width: 400px;
+  max-width: 340px;
   background-color: white;
-  padding: 35px;
+  padding: 25px;
   border-radius: 14px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
 }

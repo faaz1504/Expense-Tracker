@@ -17,7 +17,7 @@ function NavBar({user,setUser}){
 
         <div>
 
-            <Navbar expand="lg"  className="navstyle p-3">
+            <Navbar expand="lg" sticky="top"  className="navstyle p-2">
       <Container>
         <Navbar.Brand as={Link} to='/' className='brand'>
             EXpensoo</Navbar.Brand>
@@ -39,9 +39,9 @@ function NavBar({user,setUser}){
             Sign-In
             </Nav.Link>
 
-            <Nav.Link as={Link} to='/sign-up'>
+            {/* <Nav.Link as={Link} to='/sign-up'>
             Sign-Up
-            </Nav.Link>
+            </Nav.Link> */}
             
             </>
 
@@ -56,8 +56,12 @@ function NavBar({user,setUser}){
             Dashboard
             </Nav.Link>
 
-            <Nav.Link as={Link} to='/'>
+            <Nav.Link as={Link} to='/user-transactions'>
            Transactions
+            </Nav.Link>
+
+            <Nav.Link as={Link} to='/User-Profile'>
+           Profile
             </Nav.Link>
 
             <Nav.Link as={Link} to='/' onClick={handleLogout}>

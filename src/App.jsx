@@ -6,6 +6,10 @@ import SignUp from "./pages/Sign-Up";
 import { useState } from "react";
 import Footer from "./components/Footer";
 import UserDashboard from "./user/UserDashboard";
+import Transactions from "./user/Transactions/Transactions";
+import AddTransactions from "./user/Transactions/AddTransactions";
+import EditTransaction from "./user/Transactions/EditTransaction";
+import UserProfile from "./user/UserProfile";
 
 
 function App(){
@@ -27,6 +31,14 @@ function App(){
         <Route path="/" element={<Home/>}/>
 
         <Route path="/user-dashboard" element={<UserDashboard/>}/>
+
+        <Route path="/user-transactions" element={<Transactions/>}/>
+
+        <Route path="/Add-transactions" element={<AddTransactions/>}/>
+
+        <Route path="/Edit-transaction" element={<EditTransaction/>}/>
+
+        <Route path="/User-Profile" element={<UserProfile/>}/>
 
         <Route path="/sign-in" element={<SignIn setUser={setUser}/>}/>
 

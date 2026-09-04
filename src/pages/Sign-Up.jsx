@@ -1,7 +1,8 @@
-import { Formik, useFormik } from "formik";
+import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 import * as Yup from 'yup'
 import './signup.css'
+import { Link } from "react-router-dom";
 
 function SignUp({setUser}){
 
@@ -20,7 +21,8 @@ function SignUp({setUser}){
             name:Yup.string()
                     .required("name is required"),
 
-            email:Yup.string("invalid email")
+            email:Yup.string()
+                     .email("invalid email")
                      .required("email is required"),
                      
 
@@ -38,12 +40,8 @@ function SignUp({setUser}){
          onSubmit:(values) =>{
             console.log(values);
             
-            setUser({
-                name: values.name,
-                email: values.email
-            });
-
-            navigate('/')
+            
+            navigate('/sign-in')
          }
 
 
@@ -142,6 +140,15 @@ return (
         <button type="submit" className="signup-btn">
           Sign Up
         </button>
+            
+            <p className="signup-link">
+    Already Have An Account?{" "}
+    <Link to="/sign-in">
+        Sign-In
+    </Link>
+</p>
+
+        
 
       </form>
 

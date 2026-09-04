@@ -1,7 +1,8 @@
-import { Formik, useFormik } from "formik";
+import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 import * as Yup from 'yup'
 import './signin.css'
+import { Link } from "react-router-dom";
 
 function SignIn({setUser}){
 
@@ -21,13 +22,14 @@ function SignIn({setUser}){
             name:Yup.string()
                     .required("Username is required"),
             
-            email:Yup.string("invalid email")
+            email:Yup.string()
+                     .email("invalid email")
                      .required('email is required'),
 
             password:Yup.string()
                         .min(6,'password must be 6 characters')
                         .max(12,'password can only be 12 characters')
-                        .matches(/[A-Z]/,'password must be Uppercase')
+                        // .matches(/[A-Z]/,'password must be Uppercase')
                         .required('password is required')
 
 
@@ -41,7 +43,7 @@ function SignIn({setUser}){
                 email:values.email
             });
 
-            navigate('/');
+            navigate('/user-dashboard');
 
 
         }
@@ -119,6 +121,17 @@ function SignIn({setUser}){
         <button type="submit" className="signin-btn">
           Sign In
         </button>
+
+        <p  className="signup-link">
+
+                  Don't have an account?{" "}
+
+                  <Link
+                    to="/sign-up">
+                    Register
+                  </Link>
+
+                </p>
 
       </form>
 
