@@ -10,10 +10,20 @@ import {
   Form,
   Button
 } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { addTransaction } from "../../redux/transaction/transactionSlice";
 
 function AddTransactions() {
 
   const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+
+  const user = useSelector(
+
+  (state) => state.auth.user
+
+  )
 
   const formik = useFormik({
 
@@ -48,6 +58,26 @@ function AddTransactions() {
     onSubmit: (values) => {
 
       console.log(values);
+
+      const newTransaction ={
+
+        id:Date.now(),
+        
+        userEmail:user.email,
+
+        title:values.title,
+
+        amount:Number(values.amount),
+
+        type:values.type,
+
+        category:values.category,
+
+        date:values.date
+
+      };
+
+      dispatch(addTransaction(newTransaction))
 
       // Add transaction functionality later
 

@@ -39,7 +39,7 @@ function Home(){
         </div>
 
 
-        <div className="hero-dashboard">
+        {/* <div className="hero-dashboard">
 
           <div className="balance-card">
             <p>Current Balance</p>
@@ -99,7 +99,7 @@ function Home(){
 
           </div>
 
-        </div> 
+        </div>  */}
 
       </section>
 

@@ -1,6 +1,6 @@
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import {
   Container,
@@ -10,20 +10,45 @@ import {
   Form,
   Button
 } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { updateTransaction } from "../../redux/transaction/transactionSlice";
+
 
 function EditTransaction() {
 
   const navigate = useNavigate();
 
+  const dispatch = useDispatch();
+
+  const {id} = useParams();
+
+  const transactions = useSelector(
+    (state) => state.transactions.transactions
+  );
+
+  const transaction = transactions.find(
+    (item) => item.id === Number(id)
+  )
+
   const formik = useFormik({
 
-    initialValues: {
-      title: "Groceries",
-      amount: 1500,
-      type: "expense",
-      category: "food",
-      date: "2026-09-03"
-    },
+    initialValues:{
+
+    title:transaction?.title || "",
+
+    amount:transaction?.amount || "",
+
+    type:transaction?.type || "",
+
+    category:transaction?.category || "",
+
+    date:transaction?.date || ""
+
+  },
+
+  enableReinitialize:true,
+
+
 
     validationSchema: Yup.object({
 
@@ -50,12 +75,39 @@ function EditTransaction() {
 
       console.log("Updated Transaction:", values);
 
-      // Update functionality later
+      const updatedTransaction ={
+
+        ...transaction,
+
+        title:values.title,
+
+         amount:Number(values.amount),
+
+         type:values.type,
+
+        category:values.category,
+
+        date:values.date
+
+      };
+
+      dispatch(updateTransaction(updatedTransaction));
+
 
       navigate("/user-transactions");
     }
 
   });
+
+   if (!transaction) {
+
+    return (
+      <div className="text-center mt-5">
+        Transaction not found
+      </div>
+    );
+
+  }
 
   return (
 
@@ -286,6 +338,7 @@ function EditTransaction() {
                     type="submit"
                     variant="primary"
                     className="w-50"
+                    
                   >
                     Update
                   </Button>

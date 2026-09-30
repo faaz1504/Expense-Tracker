@@ -5,8 +5,34 @@ import {
   Card,
   Button
 } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { logout } from "../redux/authSlice";
 
 function UserProfile(){
+
+  const user = useSelector(
+
+    (state) => state.auth.user
+
+  )
+
+  if(!user){
+    return <p className="text-center mt-5">No user logged in</p>
+  }
+
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+
+  const handleLogout = () =>{
+
+    dispatch(logout());
+
+    navigate('/sign-up');
+  }
+
+
 
     return(
 
@@ -31,7 +57,16 @@ function UserProfile(){
                   fontSize: "30px"
                 }}
               >
-                F
+                <img
+                src="https://images.unsplash.com/photo-1740252117044-2af197eea287?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHByb2ZpbGUlMjBpY29ufGVufDB8fDB8fHww"
+                alt="profile"
+                className="rounded-circle mb-3"
+                style={{
+                  width: "130px",
+                  height: "100px",
+                  objectFit: "cover"
+                }}
+              />
               </div>
 
               <h3>User Profile</h3>
@@ -45,29 +80,30 @@ function UserProfile(){
               <div className="text-start">
 
                 <p>
-                  <strong>Name:</strong> Faaz
+                  <strong>Name:</strong> {user.name}
                 </p>
 
                 <p>
-                  <strong>Email:</strong> faaz@gmail.com
+                  <strong>Email:</strong> {user.email}
                 </p>
 
                 <p>
-                  <strong>Role:</strong> User
+                  <strong>Role:</strong> {user.role}
                 </p>
 
               </div>
 
-              <Button
+              {/* <Button
                 variant="primary"
                 className="w-100 mt-3"
               >
                 Edit Profile
-              </Button>
+              </Button> */}
 
               <Button
                 variant="danger"
                 className="w-100 mt-3"
+                onClick={handleLogout}
               >
                 Logout
               </Button>

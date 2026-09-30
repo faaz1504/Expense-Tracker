@@ -1,161 +1,243 @@
 import { useFormik } from "formik";
-import { useNavigate } from "react-router-dom";
-import * as Yup from 'yup'
-import './signup.css'
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import * as Yup from "yup";
 
-function SignUp({setUser}){
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  Form,
+  Button
+} from "react-bootstrap";
 
-    const navigate = useNavigate();
-    const formik = useFormik({
+import { useDispatch } from "react-redux";
+import { register } from "../redux/authSlice";
 
-        initialValues:{
-            name:"",
-            email:"",
-            password:"",
-            confirmpassword:""
-        },
+function SignUp() {
 
-         validationSchema:Yup.object({
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-            name:Yup.string()
-                    .required("name is required"),
+  const formik = useFormik({
 
-            email:Yup.string()
-                     .email("invalid email")
-                     .required("email is required"),
-                     
+    initialValues: {
+      name: "",
+      email: "",
+      password: "",
+      role: "user"
+    },
 
-            password:Yup.string()
-                        .min(6,"password must be atleast 6 characters")
-                        .max(12)
-                        .matches(/[A-Z]/,"uppercase only")
-                        .required("password is required"),
+    validationSchema: Yup.object({
 
-            confirmpassword:Yup.string()
-                                .oneOf([Yup.ref('password')],'password does not match')
-                                .required("confirm password is must")
-         }),
+      name: Yup.string()
+        .required("Name is required"),
 
-         onSubmit:(values) =>{
-            console.log(values);
-            
-            
-            navigate('/sign-in')
-         }
+      email: Yup.string()
+        .email("Invalid email")
+        .required("Email is required"),
+
+      password: Yup.string()
+        .min(6, "Password must be at least 6 characters")
+        .max(12, "Password can only be 12 characters")
+        .required("Password is required")
+
+    }),
+
+    onSubmit: (values) => {
+
+      const newUser = {
+        id: Date.now(),
+        ...values
+      };
+
+      dispatch(register(newUser));
+
+      navigate("/sign-in");
+    }
+
+  });
+
+  
+    return (
+  <Container
+    fluid
+    className="bg-light d-flex justify-content-center py-2"
+  >
+
+    <Card
+      className="border-0 shadow-sm"
+      style={{
+        width: "100%",
+        maxWidth: "380px"
+      }}
+    >
+
+      <Card.Body className="p-3">
+
+        <div className="text-center mb-2">
+
+          <h4 className="fw-bold mb-1">
+            Create Account
+          </h4>
+
+          <p className="text-muted small mb-2">
+            Start tracking your expenses with EXpensoo
+          </p>
+
+        </div>
 
 
-    })
+        <Form
+          noValidate
+          onSubmit={formik.handleSubmit}
+        >
 
+          {/* NAME */}
 
-return (
-  <div className="signup-page">
+          <Form.Group className="mb-2">
 
-    <div className="signup-card">
+            <Form.Label className="small fw-semibold mb-1">
+              Name
+            </Form.Label>
 
-      <h2>Create Account</h2>
-      <p className="signup-subtitle">
-        Create an account to start tracking your expenses
-      </p>
+            <Form.Control
+              size="sm"
+              type="text"
+              name="name"
+              placeholder="Enter your name"
+              value={formik.values.name}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              isInvalid={
+                formik.touched.name &&
+                !!formik.errors.name
+              }
+            />
 
-      <form onSubmit={formik.handleSubmit}>
-
-        <div className="form-group">
-          <label>Name</label>
-
-          <input
-            type="text"
-            name="name"
-            placeholder="Enter your name"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.name}
-          />
-
-          {formik.touched.name && formik.errors.name && (
-            <div className="error">
+            <Form.Control.Feedback type="invalid">
               {formik.errors.name}
-            </div>
-          )}
-        </div>
+            </Form.Control.Feedback>
 
-        <div className="form-group">
-          <label>Email</label>
+          </Form.Group>
 
-          <input
-            type="email"
-            name="email"
-            placeholder="Enter your email"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.email}
-          />
 
-          {formik.touched.email && formik.errors.email && (
-            <div className="error">
+          {/* EMAIL */}
+
+          <Form.Group className="mb-2">
+
+            <Form.Label className="small fw-semibold mb-1">
+              Email
+            </Form.Label>
+
+            <Form.Control
+              size="sm"
+              type="email"
+              name="email"
+              placeholder="Enter your email"
+              value={formik.values.email}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              isInvalid={
+                formik.touched.email &&
+                !!formik.errors.email
+              }
+            />
+
+            <Form.Control.Feedback type="invalid">
               {formik.errors.email}
-            </div>
-          )}
-        </div>
+            </Form.Control.Feedback>
 
-        <div className="form-group">
-          <label>Password</label>
+          </Form.Group>
 
-          <input
-            type="password"
-            name="password"
-            placeholder="Enter your password"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.password}
-          />
 
-          {formik.touched.password && formik.errors.password && (
-            <div className="error">
+          {/* PASSWORD */}
+
+          <Form.Group className="mb-2">
+
+            <Form.Label className="small fw-semibold mb-1">
+              Password
+            </Form.Label>
+
+            <Form.Control
+              size="sm"
+              type="password"
+              name="password"
+              placeholder="Enter your password"
+              value={formik.values.password}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              isInvalid={
+                formik.touched.password &&
+                !!formik.errors.password
+              }
+            />
+
+            <Form.Control.Feedback type="invalid">
               {formik.errors.password}
-            </div>
-          )}
-        </div>
+            </Form.Control.Feedback>
 
-        <div className="form-group">
-          <label>Confirm Password</label>
+          </Form.Group>
 
-          <input
-            type="password"
-            name="confirmpassword"
-            placeholder="Confirm your password"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.confirmpassword}
-          />
 
-          {formik.touched.confirmpassword &&
-            formik.errors.confirmpassword && (
-              <div className="error">
-                {formik.errors.confirmpassword}
-              </div>
-            )}
-        </div>
+          {/* ROLE */}
 
-        <button type="submit" className="signup-btn">
-          Sign Up
-        </button>
-            
-            <p className="signup-link">
-    Already Have An Account?{" "}
-    <Link to="/sign-in">
-        Sign-In
-    </Link>
-</p>
+          <Form.Group className="mb-2">
 
-        
+            <Form.Label className="small fw-semibold mb-1">
+              Role
+            </Form.Label>
 
-      </form>
+            <Form.Select
+              size="sm"
+              name="role"
+              value={formik.values.role}
+              onChange={formik.handleChange}
+            >
+              <option value="user">
+                User
+              </option>
 
-    </div>
+              <option value="admin">
+                Admin
+              </option>
+            </Form.Select>
 
-  </div>
+          </Form.Group>
+
+
+          <Button
+            type="submit"
+            size="sm"
+            variant="primary"
+            className="w-100 mt-2"
+          >
+            Sign Up
+          </Button>
+
+
+          <p className="text-center text-muted small mt-2 mb-0">
+
+            Already have an account?{" "}
+
+            <Link
+              to="/sign-in"
+              className="text-decoration-none fw-semibold"
+            >
+              Sign In
+            </Link>
+
+          </p>
+
+        </Form>
+
+      </Card.Body>
+
+    </Card>
+
+  </Container>
 );
-
+  
 }
+
 export default SignUp;

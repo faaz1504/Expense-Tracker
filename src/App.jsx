@@ -1,4 +1,4 @@
-import NavBar from "./components/NavBar";
+// import NavBar from "./components/NavBar";
 import {BrowserRouter,Route,Routes} from "react-router-dom"
 import Home from "./pages/Home";
 import SignIn from "./pages/Sign-In";
@@ -10,11 +10,18 @@ import Transactions from "./user/Transactions/Transactions";
 import AddTransactions from "./user/Transactions/AddTransactions";
 import EditTransaction from "./user/Transactions/EditTransaction";
 import UserProfile from "./user/UserProfile";
+import UserLayout from "./user/UserLayout";
+import AdminLayout from "./Admin/AdminLayout";
+import AdminSidebar from "./Admin/AdminSidebar";
+import AdminNavbar from "./Admin/AdminNav";
+import AdminDashboard from "./Admin/AdminDashboard";
+import PublicLayout from "./components/PublicLayout";
+import About from "./pages/About";
 
 
 function App(){
 
-  const [user,setUser] = useState(null);
+  // const [user,setUser] = useState(null);
 
   return(
 
@@ -22,13 +29,31 @@ function App(){
 
     <BrowserRouter>
     
-    <NavBar user={user} setUser={setUser}/>
+    
 
     <Routes>
        
-        {/* user */}
+        {/* Public section */}
+
+        <Route element={<PublicLayout/>}>
 
         <Route path="/" element={<Home/>}/>
+
+        <Route path="/sign-in" element={<SignIn/>}/>
+
+        <Route path="/sign-up" element={<SignUp/>}/>
+
+        <Route path="/About" element={<About/>}/>
+
+        </Route>
+
+        
+
+        {/* User Section */}
+
+        <Route  element={<UserLayout/>}>
+
+        
 
         <Route path="/user-dashboard" element={<UserDashboard/>}/>
 
@@ -36,19 +61,33 @@ function App(){
 
         <Route path="/Add-transactions" element={<AddTransactions/>}/>
 
-        <Route path="/Edit-transaction" element={<EditTransaction/>}/>
+        <Route path="/edit-transaction/:id" element={<EditTransaction/>}/>
 
         <Route path="/User-Profile" element={<UserProfile/>}/>
 
-        <Route path="/sign-in" element={<SignIn setUser={setUser}/>}/>
+       
 
-        <Route path="/sign-up" element={<SignUp setUser={setUser}/>}/>
-        
+        </Route>    
+
+        {/* Admin Section */}
+
+        <Route  element={<AdminLayout/>}>
+
+          <Route path="/AdminSidebar" element={<AdminSidebar/>}/>
+
+          <Route path="/AdminNavbar" element={<AdminNavbar/>}/>
+
+          <Route path="/AdminDashboard" element={<AdminDashboard/>}/>
+
+
+
+
+        </Route>
 
 
     </Routes>
 
-    <Footer/>
+    
     
     </BrowserRouter>
 

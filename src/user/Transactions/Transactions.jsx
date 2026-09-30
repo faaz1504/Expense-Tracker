@@ -10,8 +10,58 @@ import {
   Table,
   Badge
 } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteTransaction } from "../../redux/transaction/transactionSlice";
+import { useState } from "react";
 
 function Transactions() {
+
+  const user = useSelector(
+    
+    (state) => state.auth.user
+
+  );
+
+  const transactions = useSelector(
+
+    (state) => state.transactions.transactions
+
+  );
+
+  const [search, setSearch] = useState("");
+  const [typeFilter, setTypeFilter] = useState("all");
+  const [categoryFilter, setCategoryFilter] = useState("all");
+
+  const userTransactions = transactions.filter(
+    (transaction) => transaction.userEmail === user?.email
+  );
+
+  const filteredTransactions = userTransactions.filter((transaction) =>{
+
+    const matchesSearch = transaction.title
+                          .toLowerCase()
+                          .includes(search.toLowerCase());
+
+    const matchesType = typeFilter === "all" ||
+                        transaction.type === typeFilter;
+
+    const matchesCategory = categoryFilter === 'all' ||
+                            transaction.category === categoryFilter;
+
+    return matchesSearch && matchesType && matchesCategory;
+
+  });
+
+  
+  const dispatch = useDispatch();
+ 
+  const handleDelete = (id) =>{
+
+    dispatch(deleteTransaction(id));
+
+  }
+
+  
 
   return (
     <Container
@@ -65,6 +115,9 @@ function Transactions() {
                 <Form.Control
                   type="text"
                   placeholder="Search transactions..."
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+
                 />
 
               </Col>
@@ -72,10 +125,12 @@ function Transactions() {
 
               <Col md={3}>
 
-                <Form.Select>
-                  <option>All</option>
-                  <option>Income</option>
-                  <option>Expense</option>
+                <Form.Select
+                value={typeFilter}
+                onChange={(e) => setTypeFilter(e.target.value)}>
+                  <option value={"all"}>All</option>
+                  <option value={"income"}>Income</option>
+                  <option value={"expense"}>Expense</option>
                 </Form.Select>
 
               </Col>
@@ -83,13 +138,18 @@ function Transactions() {
 
               <Col md={3}>
 
-                <Form.Select>
-                  <option>All Categories</option>
-                  <option>Food</option>
-                  <option>Travel</option>
-                  <option>Shopping</option>
-                  <option>Salary</option>
-                  <option>Bills</option>
+                <Form.Select 
+                value={categoryFilter}
+                onChange={(e) => setCategoryFilter(e.target.value)}>
+                  <option value={"all"}>All Categories</option>
+                  <option value={"food"}>Food</option>
+                  <option value={"travel"}>Travel</option>
+                  <option value={"shopping"}>Shopping</option>
+                  <option value={"rent"}>Rent</option>
+                  <option value={"salary"}>Salary</option>
+                  <option value={"bills"}>Bills</option>
+                  <option value={"health"}>health</option>
+                  <option value={"other"}>Other</option>
                 </Form.Select>
 
               </Col>
@@ -131,35 +191,58 @@ function Transactions() {
 
                 {/* SALARY */}
 
-                <tr>
+                {filteredTransactions.length > 0 ?(
+                  filteredTransactions.map((transaction) => (
+
+                <tr key={transaction.id}>
 
                   <td className="fw-semibold">
-                    Salary
+                    {transaction.title}
                   </td>
 
                   <td>
-                    Salary
+                    {transaction.category}
+                  </td>
+
+                   <td>
+                    {transaction.date}
                   </td>
 
                   <td>
-                    Aug 30
-                  </td>
-
-                  <td>
-                    <Badge bg="success">
-                      Income
+                    <Badge bg={
+                      transaction.type === "income"
+                      ? "success"
+                      : "danger"
+                    }>
+                      {transaction.type}
                     </Badge>
+                  
                   </td>
 
-                  <td className="text-success fw-semibold">
-                    + ₹30,000
+                  <td className={
+                    transaction.type === "income"
+                    ? "text-success fw-semibold"
+                    : "text-danger fw-semibold"
+                    
+                    }
+                    
+                    >
+                    {transaction.type === "income"
+                    ? "+"
+                    : "-"
+                    }
+                    
+                    {transaction.amount.toLocaleString("en-IN")}
+
                   </td>
+
+                 
 
                   <td>
 
                     <Button
                       as={Link}
-                      to="/edit-transaction"
+                      to={`/edit-transaction/${transaction.id}`}
                       variant="outline-primary"
                       size="sm"
                       className="me-2"
@@ -170,6 +253,7 @@ function Transactions() {
                     <Button
                       variant="outline-danger"
                       size="sm"
+                      onClick={() => handleDelete(transaction.id)}
                     >
                       Delete
                     </Button>
@@ -178,155 +262,26 @@ function Transactions() {
 
                 </tr>
 
+              ))
 
-                {/* GROCERIES */}
-
+            ):(
                 <tr>
 
-                  <td className="fw-semibold">
-                    Groceries
-                  </td>
-
-                  <td>
-                    Food
-                  </td>
-
-                  <td>
-                    Aug 29
-                  </td>
-
-                  <td>
-                    <Badge bg="danger">
-                      Expense
-                    </Badge>
-                  </td>
-
-                  <td className="text-danger fw-semibold">
-                    - ₹1,500
-                  </td>
-
-                  <td>
-
-                    <Button
-                      as={Link}
-                      to="/edit-transaction"
-                      variant="outline-primary"
-                      size="sm"
-                      className="me-2"
+                    <td
+                      colSpan="6"
+                      className="text-center text-muted py-4"
                     >
-                      Edit
-                    </Button>
+                      No transactions found
+                    </td>
 
-                    <Button
-                      variant="outline-danger"
-                      size="sm"
-                    >
-                      Delete
-                    </Button>
-
-                  </td>
-
-                </tr>
+                  </tr>
+                    
+                    )}
 
 
-                {/* PETROL */}
+              
 
-                <tr>
-
-                  <td className="fw-semibold">
-                    Petrol
-                  </td>
-
-                  <td>
-                    Travel
-                  </td>
-
-                  <td>
-                    Aug 28
-                  </td>
-
-                  <td>
-                    <Badge bg="danger">
-                      Expense
-                    </Badge>
-                  </td>
-
-                  <td className="text-danger fw-semibold">
-                    - ₹1,000
-                  </td>
-
-                  <td>
-
-                    <Button
-                      as={Link}
-                      to="/edit-transaction"
-                      variant="outline-primary"
-                      size="sm"
-                      className="me-2"
-                    >
-                      Edit
-                    </Button>
-
-                    <Button
-                      variant="outline-danger"
-                      size="sm"
-                    >
-                      Delete
-                    </Button>
-
-                  </td>
-
-                </tr>
-
-
-                {/* SHOPPING */}
-
-                <tr>
-
-                  <td className="fw-semibold">
-                    Shopping
-                  </td>
-
-                  <td>
-                    Shopping
-                  </td>
-
-                  <td>
-                    Aug 27
-                  </td>
-
-                  <td>
-                    <Badge bg="danger">
-                      Expense
-                    </Badge>
-                  </td>
-
-                  <td className="text-danger fw-semibold">
-                    - ₹2,000
-                  </td>
-
-                  <td>
-
-                    <Button
-                      as={Link}
-                      to="/edit-transaction"
-                      variant="outline-primary"
-                      size="sm"
-                      className="me-2"
-                    >
-                      Edit
-                    </Button>
-
-                    <Button
-                      variant="outline-danger"
-                      size="sm"
-                    >
-                      Delete
-                    </Button>
-
-                  </td>
-
-                </tr>
+                
 
               </tbody>
 
