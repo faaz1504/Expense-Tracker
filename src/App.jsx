@@ -17,6 +17,7 @@ import AdminNavbar from "./Admin/AdminNav";
 import AdminDashboard from "./Admin/AdminDashboard";
 import PublicLayout from "./components/PublicLayout";
 import About from "./pages/About";
+import PageNotFound from "./pages/PageNotFound";
 
 
 function App(){
@@ -84,7 +85,7 @@ function App(){
 
         </Route>
 
-
+      <Route path="*" element={<PageNotFound/>}/>
     </Routes>
 
     

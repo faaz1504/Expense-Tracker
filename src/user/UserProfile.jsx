@@ -69,7 +69,7 @@ function UserProfile(){
               />
               </div>
 
-              <h3>User Profile</h3>
+              <h3>{user.name}</h3>
 
               <p className="text-muted">
                 Manage your account information
@@ -87,9 +87,9 @@ function UserProfile(){
                   <strong>Email:</strong> {user.email}
                 </p>
 
-                <p>
+                {/* <p>
                   <strong>Role:</strong> {user.role}
-                </p>
+                </p> */}
 
               </div>
 
