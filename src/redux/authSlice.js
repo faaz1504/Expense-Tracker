@@ -32,7 +32,28 @@ const authSlice = createSlice({
 
         },
 
-        
+        updateProfile:(state,action) =>{
+
+            const {id,name} = action.payload
+
+            const index = state.users.findIndex(
+                (user) => user.id === id     
+            );
+
+            if(index !== -1){
+                
+                state.users[index].name = name;
+            }
+
+            if(state.user){
+                
+                state.user.name =name
+            }
+
+            localStorage.setItem("user",JSON.stringify(state.user))
+
+            localStorage.setItem("registereduser",JSON.stringify(state.users))
+        },
 
         logout:(state) => {
 
@@ -45,5 +66,5 @@ const authSlice = createSlice({
 
 });
 
-export const {register,signIn,logout} = authSlice.actions;
+export const {register,signIn,logout,updateProfile} = authSlice.actions;
 export default authSlice.reducer;

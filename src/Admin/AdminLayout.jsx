@@ -1,9 +1,21 @@
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import AdminNavbar from "./AdminNav";
 import AdminSidebar from "./AdminSidebar";
+import { useSelector } from "react-redux";
 
 function AdminLayout(){
 
+    const user = useSelector(
+        (state) => state.auth.user
+    )
+
+    if(!user){
+        return <Navigate to="/sign-in"/> 
+    }
+
+    if(user.role !== "admin"){
+        return <Navigate to="/AdminDashboard"/>
+    }
     return(
 
         <div>

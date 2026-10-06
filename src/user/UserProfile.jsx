@@ -3,11 +3,13 @@ import {
   Row,
   Col,
   Card,
-  Button
+  Button,
+  Form
 } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { logout } from "../redux/authSlice";
+import { logout, updateProfile } from "../redux/authSlice";
+import { useState } from "react";
 
 function UserProfile(){
 
@@ -17,9 +19,7 @@ function UserProfile(){
 
   )
 
-  if(!user){
-    return <p className="text-center mt-5">No user logged in</p>
-  }
+  
 
   const dispatch = useDispatch();
 
@@ -30,6 +30,30 @@ function UserProfile(){
     dispatch(logout());
 
     navigate('/sign-up');
+  }
+
+  const [editing,setEditing] = useState(false);
+
+  const [name,setName] = useState(user?.name || "")
+
+  const handleUpdate = () =>{
+
+    if(name.trim() === ""){
+      
+      return;
+    }
+
+    dispatch(updateProfile({
+
+      id:user.id,
+      name:name
+    }))
+
+    setEditing(false)
+  }
+
+  if(!user){
+    return <p className="text-center mt-5">No user logged in</p>
   }
 
 
@@ -80,7 +104,25 @@ function UserProfile(){
               <div className="text-start">
 
                 <p>
-                  <strong>Name:</strong> {user.name}
+                  <strong>
+                    name:
+                  </strong>
+                  {" "}
+                  {editing ? (
+
+                    <Form.Control
+                    type="text"
+                    value={name}
+                    onChange={(e)=> setName(e.target.value)}
+                    className="mt-2"
+                    />
+
+
+                  ):(
+
+                    user.name
+
+                  )}
                 </p>
 
                 <p>
@@ -92,13 +134,27 @@ function UserProfile(){
                 </p> */}
 
               </div>
+                
+                {editing ?(
+                  <Button
+                  variant="success"
+                  className="w-100 mt-3"
+                  onClick={handleUpdate}
+                  >
+                    Save Name
 
-              {/* <Button
-                variant="primary"
-                className="w-100 mt-3"
-              >
-                Edit Profile
-              </Button> */}
+                  </Button>
+                ):(
+                   <Button
+                  variant="success"
+                  className="w-100 mt-3"
+                  onClick={() => setEditing(true)}
+                  >
+                   Edit Name
+
+                  </Button>
+                )}
+              
 
               <Button
                 variant="danger"
