@@ -4,6 +4,20 @@ import LoadUser from "../utils/StorageHandle";
 
 const savedUser = JSON.parse(localStorage.getItem("registereduser")) || [];
 
+
+const adminUser = {
+    id:1,
+    name:"Admin",
+    email:"admin@expensoo.com",
+    password:"Admin@123",
+    role:"admin"
+};
+
+if(!savedUser.some((user) => user.email === adminUser.email)){
+    savedUser.push(adminUser);
+    localStorage.setItem("registereduser",JSON.stringify(savedUser));
+}
+
 const authSlice = createSlice({
 
     name:'auth',

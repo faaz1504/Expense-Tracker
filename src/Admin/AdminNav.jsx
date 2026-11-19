@@ -15,7 +15,7 @@ function AdminNavbar() {
 
         dispatch(logout());
 
-        navigate('/sign-in');
+        navigate("/");
 
 
     }
@@ -26,7 +26,7 @@ function AdminNavbar() {
     <Navbar
       bg="dark"
       data-bs-theme="dark"
-      className="py-2"
+      className="py-3"
     >
 
       <Container fluid>

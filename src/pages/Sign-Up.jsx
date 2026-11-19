@@ -25,7 +25,6 @@ function SignUp() {
       name: "",
       email: "",
       password: "",
-      role: "user"
     },
 
     validationSchema: Yup.object({
@@ -48,7 +47,8 @@ function SignUp() {
 
       const newUser = {
         id: Date.now(),
-        ...values
+        ...values,
+        role:"user"
       };
 
       dispatch(register(newUser));
@@ -182,7 +182,7 @@ function SignUp() {
 
           {/* ROLE */}
 
-          <Form.Group className="mb-2">
+          {/* <Form.Group className="mb-2">
 
             <Form.Label className="small fw-semibold mb-1">
               Role
@@ -203,7 +203,7 @@ function SignUp() {
               </option>
             </Form.Select>
 
-          </Form.Group>
+          </Form.Group> */}
 
 
           <Button

@@ -15,6 +15,43 @@
   gap: 60px;
 }
 
+.hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.hero-content {
+    flex: 1;
+}
+
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-image img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    object-fit: contain;
+}
+
+@media (max-width: 768px) {
+
+    .hero-section {
+        flex-direction: column;
+    }
+
+    .hero-image img {
+        max-width: 380px;
+    }
+
+}
+
 .hero-content {
   flex: 1;
   max-width: 600px;

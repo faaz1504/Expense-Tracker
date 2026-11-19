@@ -18,6 +18,9 @@ import AdminDashboard from "./Admin/AdminDashboard";
 import PublicLayout from "./components/PublicLayout";
 import About from "./pages/About";
 import PageNotFound from "./pages/PageNotFound";
+import ViewUsers from "./Admin/users/viewUsers";
+import AdminTransactions from "./Admin/transactions/AdminTransactions";
+import AdminProfile from "./Admin/AdminProfile";
 
 
 function App(){
@@ -79,6 +82,13 @@ function App(){
           <Route path="/AdminNavbar" element={<AdminNavbar/>}/>
 
           <Route path="/AdminDashboard" element={<AdminDashboard/>}/>
+
+          <Route path="/admin-users" element={<ViewUsers/>}/>
+
+          <Route path="/admin-transactions" element={<AdminTransactions/>}/>
+
+          <Route path="/admin-profile" element={<AdminProfile/>}/>
+
 
 
 

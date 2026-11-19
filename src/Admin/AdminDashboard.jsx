@@ -6,8 +6,31 @@ import {
   Table,
   Badge
 } from "react-bootstrap";
+import { useSelector } from "react-redux";
+import {Link} from "react-router-dom"
 
 function AdminDashboard() {
+
+  const users = useSelector(
+    (state) => state.auth.users
+  );
+
+  const transactions = useSelector(
+    (state) => state.transactions.transactions
+  );
+
+  const normalUsers = users.filter(
+    (user) => user.role === "user"
+  );
+
+  const activeUsers = normalUsers.filter(
+    (user) => user.status !== false
+  );
+
+  const recentUsers = [...normalUsers]
+    .sort((a, b) => b.id - a.id)
+    .slice(0, 3);
+
 
   return (
     <Container
@@ -50,7 +73,7 @@ function AdminDashboard() {
                 </p>
 
                 <h2 className="fw-bold">
-                  25
+                  {normalUsers.length}
                 </h2>
 
                 <small className="text-muted">
@@ -75,7 +98,7 @@ function AdminDashboard() {
                 </p>
 
                 <h2 className="fw-bold">
-                  148
+                  {transactions.length}
                 </h2>
 
                 <small className="text-muted">
@@ -100,7 +123,7 @@ function AdminDashboard() {
                 </p>
 
                 <h2 className="fw-bold">
-                  20
+                  {activeUsers.length}
                 </h2>
 
                 <small className="text-muted">
@@ -128,9 +151,12 @@ function AdminDashboard() {
                 Recent Users
               </h4>
 
-              <span className="text-primary">
-                View All
-              </span>
+              <Link
+                    to="/admin-transactions"
+                    className="text-decoration-none"
+                  >
+                    View All
+                  </Link>
 
             </div>
 
@@ -155,67 +181,56 @@ function AdminDashboard() {
 
               <tbody>
 
-                <tr>
+                {recentUsers.length > 0 ? (
 
-                  <td>Rahul</td>
+                  recentUsers.map((user) => (
 
-                  <td>
-                    rahul@gmail.com
-                  </td>
+                    <tr key={user.id}>
 
-                  <td>
-                    User
-                  </td>
+                      <td className="fw-semibold">
+                        {user.name}
+                      </td>
 
-                  <td>
-                    <Badge bg="success">
-                      Active
-                    </Badge>
-                  </td>
+                      <td>
+                        {user.email}
+                      </td>
 
-                </tr>
+                      <td className="text-capitalize">
+                        {user.role}
+                      </td>
 
+                      <td>
 
-                <tr>
+                        <Badge
+                          bg={
+                            user.status === false
+                            ? "secondary"
+                            : "success"
+                          }
+                        >
+                          {user.status === false ? "Inactive" : "Active"}
+                        </Badge>
 
-                  <td>Fathima</td>
+                      </td>
 
-                  <td>
-                    fathima@gmail.com
-                  </td>
+                    </tr>
 
-                  <td>
-                    User
-                  </td>
+                  ))
 
-                  <td>
-                    <Badge bg="success">
-                      Active
-                    </Badge>
-                  </td>
+                ) : (
 
-                </tr>
+                  <tr>
 
+                    <td
+                      colSpan="4"
+                      className="text-center text-muted py-4"
+                    >
+                      No users registered yet
+                    </td>
 
-                <tr>
+                  </tr>
 
-                  <td>Arjun</td>
-
-                  <td>
-                    arjun@gmail.com
-                  </td>
-
-                  <td>
-                    User
-                  </td>
-
-                  <td>
-                    <Badge bg="secondary">
-                      Inactive
-                    </Badge>
-                  </td>
-
-                </tr>
+                )}
 
               </tbody>
 

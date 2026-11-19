@@ -38,6 +38,15 @@ function Home(){
 
         </div>
 
+         <div className="hero-image">
+
+          <img
+            src="/images/undraw_finance_m6vw.svg"
+            alt="Expense Tracker Illustration"
+          />
+
+        </div>
+
 
         {/* <div className="hero-dashboard">
 
