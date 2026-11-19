@@ -2,7 +2,7 @@ import {Container,Card,Table,Badge} from "react-bootstrap";
 
 import { useSelector } from "react-redux";
 
-function ViewUsers(){
+function ViewUsers (){
     
     const users = useSelector(
         (state) => state.auth.users

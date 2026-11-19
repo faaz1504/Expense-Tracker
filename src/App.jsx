@@ -18,7 +18,7 @@ import AdminDashboard from "./Admin/AdminDashboard";
 import PublicLayout from "./components/PublicLayout";
 import About from "./pages/About";
 import PageNotFound from "./pages/PageNotFound";
-import ViewUsers from "./Admin/users/viewUsers";
+import ViewUsers from "./Admin/users/ViewUsers"
 import AdminTransactions from "./Admin/transactions/AdminTransactions";
 import AdminProfile from "./Admin/AdminProfile";
 
