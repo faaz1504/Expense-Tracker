@@ -22,7 +22,8 @@ import PageNotFound from "./pages/PageNotFound";
 
 import AdminProfile from "./Admin/AdminProfile";
 import AdminTransactions from "./Admin/Transactions-admin/AdminTransactions";
-import ViewUsers from "./Admin/Users-admin/viewUsers";
+import ViewUsers from "./Admin/Users-admin/ViewUsers";
+
 
 
 
