@@ -62,21 +62,30 @@ function SignIn() {
 
   return (
 
-    <div className="min-h-[85vh] bg-gray-100 flex items-center justify-center px-4 py-10">
+    <div
+      className="min-h-[85vh] flex items-center justify-center px-4 py-10"
+      style={{ backgroundColor: "#fafafa" }}
+    >
 
       <div className="w-full max-w-sm">
 
-        <div className="bg-white shadow-md rounded-xl p-6">
+        <div
+          className="bg-white p-6 rounded-lg"
+          style={{
+            border: "1px solid #e4e4e7",
+            boxShadow: "0 1px 2px rgba(0,0,0,0.04)"
+          }}
+        >
 
           {/* HEADING */}
 
           <div className="text-center mb-6">
 
-            <h3 className="text-2xl font-bold text-gray-800">
+            <h3 className="text-xl font-semibold text-zinc-900 tracking-tight">
               Sign In
             </h3>
 
-            <p className="text-gray-500 text-sm mt-1">
+            <p className="text-zinc-500 text-sm mt-1">
               Welcome back to EXpensoo
             </p>
 
@@ -91,7 +100,7 @@ function SignIn() {
 
               <label
                 htmlFor="email"
-                className="block text-sm font-medium text-gray-700 mb-1"
+                className="block text-sm font-medium text-zinc-700 mb-1"
               >
                 Email
               </label>
@@ -104,18 +113,18 @@ function SignIn() {
                 value={formik.values.email}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                className={`w-full px-3 py-2 border rounded-lg outline-none transition
+                className={`w-full px-3 py-2 text-sm border rounded outline-none transition
                   ${
                     formik.touched.email && formik.errors.email
-                      ? "border-red-500 focus:ring-2 focus:ring-red-200"
-                      : "border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
+                      ? "border-red-500 focus:ring-1 focus:ring-red-500"
+                      : "border-zinc-300 focus:border-zinc-900 focus:ring-1 focus:ring-zinc-900"
                   }
                 `}
               />
 
               {formik.touched.email && formik.errors.email && (
 
-                <p className="text-red-500 text-sm mt-1">
+                <p className="text-red-500 text-xs mt-1">
                   {formik.errors.email}
                 </p>
 
@@ -126,11 +135,11 @@ function SignIn() {
 
             {/* PASSWORD */}
 
-            <div className="mb-6">
+            <div className="mb-5">
 
               <label
                 htmlFor="password"
-                className="block text-sm font-medium text-gray-700 mb-1"
+                className="block text-sm font-medium text-zinc-700 mb-1"
               >
                 Password
               </label>
@@ -143,18 +152,18 @@ function SignIn() {
                 value={formik.values.password}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                className={`w-full px-3 py-2 border rounded-lg outline-none transition
+                className={`w-full px-3 py-2 text-sm border rounded outline-none transition
                   ${
                     formik.touched.password && formik.errors.password
-                      ? "border-red-500 focus:ring-2 focus:ring-red-200"
-                      : "border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
+                      ? "border-red-500 focus:ring-1 focus:ring-red-500"
+                      : "border-zinc-300 focus:border-zinc-900 focus:ring-1 focus:ring-zinc-900"
                   }
                 `}
               />
 
               {formik.touched.password && formik.errors.password && (
 
-                <p className="text-red-500 text-sm mt-1">
+                <p className="text-red-500 text-xs mt-1">
                   {formik.errors.password}
                 </p>
 
@@ -167,7 +176,7 @@ function SignIn() {
 
             <button
               type="submit"
-              className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 transition"
+              className="w-full bg-zinc-900 text-white py-2 px-4 rounded text-sm font-medium hover:bg-zinc-800 transition"
             >
               Sign In
             </button>
@@ -175,13 +184,13 @@ function SignIn() {
 
             {/* REGISTER */}
 
-            <p className="text-center text-gray-500 text-sm mt-4">
+            <p className="text-center text-xs text-zinc-500 mt-4">
 
               Don't have an account?{" "}
 
               <Link
                 to="/sign-up"
-                className="text-blue-600 font-semibold hover:underline"
+                className="text-zinc-900 font-medium hover:underline"
               >
                 Register
               </Link>

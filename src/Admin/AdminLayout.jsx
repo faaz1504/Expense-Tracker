@@ -18,14 +18,14 @@ function AdminLayout(){
     }
     return(
 
-        <div>
+        <div style={{ backgroundColor: "#fafafa", minHeight: "100vh" }}>
 
             <AdminNavbar/>
             <AdminSidebar/>
 
             <div
         style={{
-          marginLeft: "250px",
+          marginLeft: "240px",
           padding: "30px"
         }}
       >

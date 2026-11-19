@@ -18,30 +18,29 @@ function ViewUsers (){
 
       <div className="mb-4">
 
-        <h2 className="fw-bold mb-1">
+        <h3 className="fw-semibold mb-1">
           Users
-        </h2>
+        </h3>
 
-        <p className="text-muted mb-0">
-          View all registered users
+        <p className="text-muted small mb-0">
+          View and manage registered user accounts
         </p>
 
       </div>
 
 
-      <Card className="border-0 shadow-sm rounded-4">
+      <Card className="border shadow-sm">
 
-        <Card.Header className="bg-white border-0 py-3">
+        <Card.Header className="bg-white border-bottom py-3">
 
           <div className="d-flex justify-content-between align-items-center">
 
-            <h5 className="fw-bold mb-0">
+            <h6 className="fw-semibold mb-0">
               Registered Users
-            </h5>
+            </h6>
 
             <Badge
-              bg="primary"
-              pill
+              bg="secondary"
             >
               {normalUsers.length} Users
             </Badge>

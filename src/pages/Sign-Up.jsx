@@ -62,26 +62,27 @@ function SignUp() {
     return (
   <Container
     fluid
-    className="bg-light d-flex justify-content-center py-2"
+    className="bg-light d-flex justify-content-center align-items-center py-5"
+    style={{ minHeight: "85vh" }}
   >
 
     <Card
-      className="border-0 shadow-sm"
+      className="border shadow-sm"
       style={{
         width: "100%",
         maxWidth: "380px"
       }}
     >
 
-      <Card.Body className="p-3">
+      <Card.Body className="p-4">
 
-        <div className="text-center mb-2">
+        <div className="text-center mb-3">
 
-          <h4 className="fw-bold mb-1">
+          <h4 className="fw-semibold mb-1">
             Create Account
           </h4>
 
-          <p className="text-muted small mb-2">
+          <p className="text-muted small mb-3">
             Start tracking your expenses with EXpensoo
           </p>
 

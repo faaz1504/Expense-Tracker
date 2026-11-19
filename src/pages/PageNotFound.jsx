@@ -6,20 +6,23 @@ function PageNotFound() {
   return (
 
     <Container
-      className="d-flex flex-column justify-content-center align-items-center text-center"
+      className="d-flex flex-column justify-content-center align-items-center text-center py-5"
       style={{ minHeight: "80vh" }}
     >
 
-      <h1 className="display-1 fw-bold text-primary">
+      <h1
+        className="display-4 fw-bold text-zinc-900 mb-2"
+        style={{ letterSpacing: "-0.03em" }}
+      >
         404
       </h1>
 
-      <h2 className="fw-bold">
+      <h4 className="fw-semibold mb-2">
         Page Not Found
-      </h2>
+      </h4>
 
-      <p className="text-muted mb-4">
-        The page you are looking for does not exist.
+      <p className="text-muted mb-4 small" style={{ maxWidth: "360px" }}>
+        The page you are looking for does not exist or may have been moved.
       </p>
 
       <Button

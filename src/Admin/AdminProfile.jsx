@@ -50,22 +50,18 @@ function AdminProfile() {
 
 
     return(
-        <Container fluid className="bg-light py-4" style={{minHeight:"100vh"}}>
+        <Container fluid className="bg-light py-5" style={{minHeight:"100vh"}}>
 
             <Container>
 
                 <div className="mb-4">
 
-                    <p className="text-muted mb-1">
-                        ADMIN PANEL
-                    </p>
-
-                    <h3 className="fw-bold mb-1">
+                    <h3 className="fw-semibold mb-1">
                         My Profile
                     </h3>
 
-                    <p className="text-muted small">
-                        Manage your account details.
+                    <p className="text-muted small mb-0">
+                        Manage your administrator account details
                     </p>
 
                 </div>
@@ -75,7 +71,7 @@ function AdminProfile() {
 
                     <Col md={8} lg={6} xl={5}>
 
-                        <Card className="border-0 shadow-sm rounded-4">
+                        <Card className="border shadow-sm">
 
                             <Card.Body className="p-3 p-md-4">
 

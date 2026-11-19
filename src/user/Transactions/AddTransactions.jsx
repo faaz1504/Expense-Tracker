@@ -1,38 +1,93 @@
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { useNavigate } from "react-router-dom";
-
-import {
-  Container,
-  Row,
-  Col,
-  Card,
-  Form,
-  Button
-} from "react-bootstrap";
+import { useNavigate, Link } from "react-router-dom";
+import { Container, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { addTransaction } from "../../redux/transaction/transactionSlice";
+import "./AddTransactions.css";
+
+// Modern SVG Icons
+const ArrowUpRightIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="7" y1="17" x2="17" y2="7"></line>
+    <polyline points="7 7 17 7 17 17"></polyline>
+  </svg>
+);
+
+const ArrowDownLeftIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="17" y1="7" x2="7" y2="17"></line>
+    <polyline points="17 17 7 17 7 7"></polyline>
+  </svg>
+);
+
+const TagIcon = () => (
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+    <line x1="7" y1="7" x2="7.01" y2="7"></line>
+  </svg>
+);
+
+const CalendarIcon = () => (
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+    <line x1="16" y1="2" x2="16" y2="6"></line>
+    <line x1="8" y1="2" x2="8" y2="6"></line>
+    <line x1="3" y1="10" x2="21" y2="10"></line>
+  </svg>
+);
+
+const CheckCircleIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+  </svg>
+);
+
+const AlertCircleIcon = () => (
+  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="10"></circle>
+    <line x1="12" y1="8" x2="12" y2="12"></line>
+    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+  </svg>
+);
+
+const ArrowLeftIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="19" y1="12" x2="5" y2="12"></line>
+    <polyline points="12 19 5 12 12 5"></polyline>
+  </svg>
+);
+
+// Modern Icon-based Categories
+const CATEGORIES = [
+  { id: "food", label: "Food & Dining", emoji: "🍔" },
+  { id: "shopping", label: "Shopping", emoji: "🛍️" },
+  { id: "travel", label: "Transport", emoji: "🚗" },
+  { id: "bills", label: "Bills & Utilities", emoji: "⚡" },
+  { id: "rent", label: "Rent & Housing", emoji: "🏠" },
+  { id: "salary", label: "Salary", emoji: "💼" },
+  { id: "health", label: "Healthcare", emoji: "🏥" },
+  { id: "other", label: "Other", emoji: "📦" }
+];
 
 function AddTransactions() {
 
   const navigate = useNavigate();
-
   const dispatch = useDispatch();
 
   const user = useSelector(
-
-  (state) => state.auth.user
-
-  )
+    (state) => state.auth.user
+  );
 
   const formik = useFormik({
 
     initialValues: {
       title: "",
       amount: "",
-      type: "",
+      type: "expense",
       category: "",
-      date: ""
+      date: new Date().toISOString().split("T")[0]
     },
 
     validationSchema: Yup.object({
@@ -41,6 +96,7 @@ function AddTransactions() {
         .required("Title is required"),
 
       amount: Yup.number()
+        .typeError("Amount must be a number")
         .positive("Amount must be greater than 0")
         .required("Amount is required"),
 
@@ -57,281 +113,346 @@ function AddTransactions() {
 
     onSubmit: (values) => {
 
-      console.log(values);
-
-      const newTransaction ={
-
-        id:Date.now(),
-        
-        userEmail:user.email,
-
-        title:values.title,
-
-        amount:Number(values.amount),
-
-        type:values.type,
-
-        category:values.category,
-
-        date:values.date
-
+      const newTransaction = {
+        id: Date.now(),
+        userEmail: user?.email,
+        title: values.title,
+        amount: Number(values.amount),
+        type: values.type,
+        category: values.category,
+        date: values.date
       };
 
-      dispatch(addTransaction(newTransaction))
-
-      // Add transaction functionality later
+      dispatch(addTransaction(newTransaction));
 
       navigate("/user-transactions");
     }
 
   });
 
+  const isIncome = formik.values.type === "income";
+
+  const handleQuickAdd = (delta) => {
+    const current = Number(formik.values.amount) || 0;
+    formik.setFieldValue("amount", current + delta);
+    formik.setFieldTouched("amount", true);
+  };
+
   return (
 
-    <Container
-      fluid
-      className="bg-light py-4"
-      style={{ minHeight: "100vh" }}
-    >
+    <div className="add-tx-page">
 
-      <Row className="justify-content-center">
+      <Container>
 
-        <Col xs={11} sm={8} md={6} lg={4}>
+        <div className="add-tx-wrapper">
 
-          <Card className="border-0 shadow-sm">
+          {/* BACK LINK */}
 
-            <Card.Body className="p-3">
+          <Link to="/user-transactions" className="add-tx-back">
+            <ArrowLeftIcon />
+            <span>Back to Transactions</span>
+          </Link>
 
-              <div className="text-center mb-3">
 
-                <p className="text-primary fw-semibold mb-1">
-                  NEW TRANSACTION
-                </p>
+          {/* MAIN TRANSACTION COMPOSER CARD */}
 
-                <h2>Add Transaction</h2>
+          <div className="add-tx-composer">
 
-                <p className="text-muted">
-                  Add your income or expense details
-                </p>
+            {/* HEADER */}
+
+            <div className="add-tx-header">
+
+              <h2>Add Transaction</h2>
+
+              <p>Record and manage your money.</p>
+
+            </div>
+
+
+            <form onSubmit={formik.handleSubmit}>
+
+
+              {/* 1. TRANSACTION TYPE SEGMENTED TOGGLE */}
+
+              <div className="type-segmented-control">
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    formik.setFieldValue("type", "expense");
+                    formik.setFieldTouched("type", true);
+                  }}
+                  className={`type-segmented-btn ${!isIncome ? "active-expense" : ""}`}
+                >
+                  <ArrowUpRightIcon />
+                  <span>Expense</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    formik.setFieldValue("type", "income");
+                    formik.setFieldTouched("type", true);
+                  }}
+                  className={`type-segmented-btn ${isIncome ? "active-income" : ""}`}
+                >
+                  <ArrowDownLeftIcon />
+                  <span>Income</span>
+                </button>
+
+              </div>
+
+              {formik.touched.type && formik.errors.type && (
+                <div className="validation-error-msg mb-3">
+                  <AlertCircleIcon />
+                  <span>{formik.errors.type}</span>
+                </div>
+              )}
+
+
+              {/* 2. HERO AMOUNT SECTION */}
+
+              <div
+                className={`amount-hero-card ${
+                  isIncome ? "focus-income" : "focus-expense"
+                } ${
+                  formik.touched.amount && formik.errors.amount ? "has-error" : ""
+                }`}
+              >
+
+                <span className="amount-label">Enter Amount</span>
+
+                <div className="amount-input-row">
+
+                  <span
+                    className="amount-currency"
+                    style={{ color: isIncome ? "#16a34a" : "#dc2626" }}
+                  >
+                    ₹
+                  </span>
+
+                  <input
+                    type="number"
+                    name="amount"
+                    placeholder="0"
+                    autoFocus
+                    value={formik.values.amount}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    className="amount-big-input"
+                    style={{ color: isIncome ? "#15803d" : "#09090b" }}
+                  />
+
+                </div>
+
+                {/* Quick Add Suggestions */}
+                <div className="amount-quick-chips">
+                  <button
+                    type="button"
+                    className="quick-chip-btn"
+                    onClick={() => handleQuickAdd(100)}
+                  >
+                    + ₹100
+                  </button>
+                  <button
+                    type="button"
+                    className="quick-chip-btn"
+                    onClick={() => handleQuickAdd(500)}
+                  >
+                    + ₹500
+                  </button>
+                  <button
+                    type="button"
+                    className="quick-chip-btn"
+                    onClick={() => handleQuickAdd(1000)}
+                  >
+                    + ₹1,000
+                  </button>
+                  <button
+                    type="button"
+                    className="quick-chip-btn"
+                    onClick={() => handleQuickAdd(5000)}
+                  >
+                    + ₹5,000
+                  </button>
+                </div>
+
+              </div>
+
+              {formik.touched.amount && formik.errors.amount && (
+                <div className="validation-error-msg mb-4" style={{ marginTop: "-20px" }}>
+                  <AlertCircleIcon />
+                  <span>{formik.errors.amount}</span>
+                </div>
+              )}
+
+
+              {/* 3. CATEGORY SELECTION (CARDS / CHIPS) */}
+
+              <div className="category-selector-section">
+
+                <div className="section-subheading">
+                  <span>Select Category</span>
+                  {formik.values.category && (
+                    <span style={{ color: isIncome ? "#16a34a" : "#dc2626", textTransform: "capitalize" }}>
+                      ● {formik.values.category}
+                    </span>
+                  )}
+                </div>
+
+                <div className="category-grid">
+
+                  {CATEGORIES.map((cat) => {
+                    const isSelected = formik.values.category === cat.id;
+
+                    return (
+                      <div
+                        key={cat.id}
+                        onClick={() => {
+                          formik.setFieldValue("category", cat.id);
+                          formik.setFieldTouched("category", true);
+                        }}
+                        className={`category-chip ${
+                          isSelected
+                            ? isIncome
+                              ? "selected selected-income"
+                              : "selected selected-expense"
+                            : ""
+                        }`}
+                      >
+                        <div className="category-chip-icon">
+                          {cat.emoji}
+                        </div>
+                        <span className="category-chip-label">
+                          {cat.label}
+                        </span>
+                      </div>
+                    );
+                  })}
+
+                </div>
+
+                {formik.touched.category && formik.errors.category && (
+                  <div className="validation-error-msg mt-2">
+                    <AlertCircleIcon />
+                    <span>{formik.errors.category}</span>
+                  </div>
+                )}
 
               </div>
 
 
-              <Form onSubmit={formik.handleSubmit}>
+              {/* 4. TRANSACTION DETAILS (TITLE & DATE) */}
+
+              <div className="details-group-box">
+
+                <Row className="g-3">
+
+                  {/* Title / Description */}
+
+                  <Col md={7}>
+
+                    <div className="detail-item">
+
+                      <label className="detail-item-header">
+                        <TagIcon />
+                        <span>Title / Note</span>
+                      </label>
+
+                      <input
+                        type="text"
+                        name="title"
+                        placeholder="e.g. Grocery shopping, Salary"
+                        value={formik.values.title}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        className={`detail-input-clean ${
+                          formik.touched.title && formik.errors.title ? "is-invalid" : ""
+                        }`}
+                      />
+
+                      {formik.touched.title && formik.errors.title && (
+                        <div className="validation-error-msg">
+                          <AlertCircleIcon />
+                          <span>{formik.errors.title}</span>
+                        </div>
+                      )}
+
+                    </div>
+
+                  </Col>
 
 
-                {/* TITLE */}
+                  {/* Date */}
 
-                <Form.Group className="mb-2">
+                  <Col md={5}>
 
-                  <Form.Label>Title</Form.Label>
+                    <div className="detail-item">
 
-                  <Form.Control
-                    type="text"
-                    name="title"
-                    placeholder="Example: Food, Salary, Petrol"
-                    value={formik.values.title}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    isInvalid={
-                      formik.touched.title &&
-                      formik.errors.title
-                    }
-                  />
+                      <label className="detail-item-header">
+                        <CalendarIcon />
+                        <span>Date</span>
+                      </label>
 
-                  <Form.Control.Feedback type="invalid">
-                    {formik.errors.title}
-                  </Form.Control.Feedback>
+                      <input
+                        type="date"
+                        name="date"
+                        value={formik.values.date}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        className={`detail-input-clean ${
+                          formik.touched.date && formik.errors.date ? "is-invalid" : ""
+                        }`}
+                      />
 
-                </Form.Group>
+                      {formik.touched.date && formik.errors.date && (
+                        <div className="validation-error-msg">
+                          <AlertCircleIcon />
+                          <span>{formik.errors.date}</span>
+                        </div>
+                      )}
 
+                    </div>
 
-                {/* AMOUNT */}
+                  </Col>
 
-                <Form.Group className="mb-3">
+                </Row>
 
-                  <Form.Label>Amount</Form.Label>
-
-                  <Form.Control
-                    type="number"
-                    name="amount"
-                    placeholder="Enter amount"
-                    value={formik.values.amount}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    isInvalid={
-                      formik.touched.amount &&
-                      formik.errors.amount
-                    }
-                  />
-
-                  <Form.Control.Feedback type="invalid">
-                    {formik.errors.amount}
-                  </Form.Control.Feedback>
-
-                </Form.Group>
+              </div>
 
 
-                {/* TYPE */}
+              {/* 5. ACTION BUTTON */}
 
-                <Form.Group className="mb-3">
-
-                  <Form.Label>Type</Form.Label>
-
-                  <Form.Select
-                    name="type"
-                    value={formik.values.type}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    isInvalid={
-                      formik.touched.type &&
-                      formik.errors.type
-                    }
-                  >
-
-                    <option value="">
-                      Select transaction type
-                    </option>
-
-                    <option value="income">
-                      Income
-                    </option>
-
-                    <option value="expense">
-                      Expense
-                    </option>
-
-                  </Form.Select>
-
-                  <Form.Control.Feedback type="invalid">
-                    {formik.errors.type}
-                  </Form.Control.Feedback>
-
-                </Form.Group>
+              <button
+                type="submit"
+                className={`save-transaction-btn ${
+                  isIncome ? "btn-income" : "btn-expense"
+                }`}
+              >
+                <CheckCircleIcon />
+                <span>Save Transaction</span>
+              </button>
 
 
-                {/* CATEGORY */}
+              {/* CANCEL LINK */}
 
-                <Form.Group className="mb-3">
+              <div className="cancel-action-row">
 
-                  <Form.Label>Category</Form.Label>
+                <Link to="/user-transactions" className="cancel-action-link">
+                  Cancel
+                </Link>
 
-                  <Form.Select
-                    name="category"
-                    value={formik.values.category}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    isInvalid={
-                      formik.touched.category &&
-                      formik.errors.category
-                    }
-                  >
+              </div>
 
-                    <option value="">
-                      Select category
-                    </option>
+            </form>
 
-                    <option value="food">
-                      Food
-                    </option>
+          </div>
 
-                    <option value="travel">
-                      Travel
-                    </option>
+        </div>
 
-                    <option value="shopping">
-                      Shopping
-                    </option>
+      </Container>
 
-                    <option value="rent">
-                      Rent
-                    </option>
-
-                    <option value="bills">
-                      Bills
-                    </option>
-
-                    <option value="salary">
-                      Salary
-                    </option>
-
-                    <option value="health">
-                      Health
-                    </option>
-
-                    <option value="other">
-                      Other
-                    </option>
-
-                  </Form.Select>
-
-                  <Form.Control.Feedback type="invalid">
-                    {formik.errors.category}
-                  </Form.Control.Feedback>
-
-                </Form.Group>
-
-
-                {/* DATE */}
-
-                <Form.Group className="mb-4">
-
-                  <Form.Label>Date</Form.Label>
-
-                  <Form.Control
-                    type="date"
-                    name="date"
-                    value={formik.values.date}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    isInvalid={
-                      formik.touched.date &&
-                      formik.errors.date
-                    }
-                  />
-
-                  <Form.Control.Feedback type="invalid">
-                    {formik.errors.date}
-                  </Form.Control.Feedback>
-
-                </Form.Group>
-
-
-                {/* BUTTONS */}
-
-                <div className="d-flex gap-2">
-
-                  <Button
-                    variant="outline-secondary"
-                    className="w-50"
-                    type="button"
-                    onClick={() => navigate("/user-transactions")}
-                  >
-                    Cancel
-                  </Button>
-
-                  <Button
-                    variant="primary"
-                    className="w-50"
-                    type="submit"
-                    
-                  >
-                    Add Transaction
-                  </Button>
-
-                </div>
-
-              </Form>
-
-            </Card.Body>
-
-          </Card>
-
-        </Col>
-
-      </Row>
-
-    </Container>
+    </div>
 
   );
 }

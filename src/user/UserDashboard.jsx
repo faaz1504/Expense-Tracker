@@ -98,13 +98,13 @@ const currentDate = new Date();
 
           <Col>
 
-            <p className="text-muted mb-1">
-              Welcome, {user?.name}
+            <p className="text-muted mb-1 small">
+              Welcome back, {user?.name}
             </p>
 
-            <h2 className="fw-bold mb-0">
-              Manage your money wisely
-            </h2>
+            <h3 className="fw-semibold mb-0">
+              Dashboard
+            </h3>
 
           </Col>
 
@@ -139,20 +139,20 @@ const currentDate = new Date();
 
           <Col xs={12} sm={6} lg={3}>
 
-            <Card className="border-0 shadow-sm h-100">
+            <Card className="border shadow-sm h-100">
 
-              <Card.Body>
+              <Card.Body className="p-3">
 
-                <p className="text-muted mb-2">
+                <p className="text-muted mb-2 small fw-medium">
                   Current Balance
                 </p>
 
-                <h3 className="fw-bold">
+                <h3 className="fw-semibold mb-1">
                   ₹{balance.toLocaleString("en-IN")}
                 </h3>
 
                 <small className="text-muted">
-                  Available balance
+                  Available funds
                 </small>
 
               </Card.Body>
@@ -167,20 +167,20 @@ const currentDate = new Date();
 
           <Col xs={12} sm={6} lg={3}>
 
-            <Card className="border-0 shadow-sm h-100">
+            <Card className="border shadow-sm h-100">
 
-              <Card.Body>
+              <Card.Body className="p-3">
 
-                <p className="text-muted mb-2">
+                <p className="text-muted mb-2 small fw-medium">
                   Total Income
                 </p>
 
-                <h3 className="fw-bold text-success">
+                <h3 className="fw-semibold text-success mb-1">
                   ₹{totalIncome.toLocaleString("en-IN")}
                 </h3>
 
                 <small className="text-muted">
-                  Total income
+                  This month
                 </small>
 
               </Card.Body>
@@ -195,20 +195,20 @@ const currentDate = new Date();
 
           <Col xs={12} sm={6} lg={3}>
 
-            <Card className="border-0 shadow-sm h-100">
+            <Card className="border shadow-sm h-100">
 
-              <Card.Body>
+              <Card.Body className="p-3">
 
-                <p className="text-muted mb-2">
+                <p className="text-muted mb-2 small fw-medium">
                   Total Expense
                 </p>
 
-                <h3 className="fw-bold text-danger">
+                <h3 className="fw-semibold text-danger mb-1">
                   ₹{totalExpense.toLocaleString("en-IN")}
                 </h3>
 
                 <small className="text-muted">
-                  Total spending
+                  This month
                 </small>
 
               </Card.Body>
@@ -223,20 +223,20 @@ const currentDate = new Date();
 
           <Col xs={12} sm={6} lg={3}>
 
-            <Card className="border-0 shadow-sm h-100">
+            <Card className="border shadow-sm h-100">
 
-              <Card.Body>
+              <Card.Body className="p-3">
 
-                <p className="text-muted mb-2">
+                <p className="text-muted mb-2 small fw-medium">
                   Transactions
                 </p>
 
-                <h3 className="fw-bold">
+                <h3 className="fw-semibold mb-1">
                   {totalTransactions}
                 </h3>
 
                 <small className="text-muted">
-                  Total transactions
+                  Total entries
                 </small>
 
               </Card.Body>
@@ -261,22 +261,23 @@ const currentDate = new Date();
           <Col lg={8}>
           
 
-            <Card className="border-0 shadow-sm h-100">
+            <Card className="border shadow-sm h-100">
 
-              <Card.Body>
+              <Card.Body className="p-3 p-md-4">
 
                 <div className="d-flex justify-content-between align-items-center mb-3">
 
-                  <h5 className="fw-bold mb-0">
+                  <h5 className="fw-semibold mb-0">
                     Recent Transactions
                   </h5>
                 
                 <div  className="d-flex align-items-center gap-2">
 
                    <Form.Select
+                  size="sm"
                   value={selectedMonth}
                   onChange={(e) => setselectedMonth(e.target.value)}
-                  className="mt-3 xs-auto"
+                  style={{ width: "auto" }}
                   >
                     <option value="0">January</option>
                     <option value="1">February</option>
@@ -296,9 +297,9 @@ const currentDate = new Date();
 
                   <Link
                     to="/user-transactions"
-                    className="text-decoration-none"
+                    className="text-decoration-none small fw-medium text-muted"
                   >
-                    View All
+                    View all
                   </Link>
 
                 </div>
@@ -403,35 +404,35 @@ const currentDate = new Date();
 
           <Col lg={4}>
 
-  <Card className="border-0 shadow-sm h-100">
+  <Card className="border shadow-sm h-100">
 
-    <Card.Body>
+    <Card.Body className="p-3 p-md-4">
 
-      <h5 className="fw-bold mb-4">
-        Money Tips
+      <h5 className="fw-semibold mb-3">
+        Tips
       </h5>
 
-      <div className="mb-4">
+      <div className="mb-3 pb-3 border-bottom">
 
-        <h6 className="fw-semibold">
-          Track every expense
+        <h6 className="fw-medium mb-1" style={{ fontSize: "0.9rem" }}>
+          Track daily expenses
         </h6>
 
         <p className="text-muted small mb-0">
-          Small daily expenses can make a big difference over time.
+          Small everyday expenses add up quickly over a month.
         </p>
 
       </div>
 
 
-      <div className="mb-4">
+      <div className="mb-3 pb-3 border-bottom">
 
-        <h6 className="fw-semibold">
-          Review your spending
+        <h6 className="fw-medium mb-1" style={{ fontSize: "0.9rem" }}>
+          Review categories
         </h6>
 
         <p className="text-muted small mb-0">
-          Check your transactions regularly to understand where your money goes.
+          Check which categories consume the most of your income.
         </p>
 
       </div>
@@ -439,12 +440,12 @@ const currentDate = new Date();
 
       <div>
 
-        <h6 className="fw-semibold">
-          Save before you spend
+        <h6 className="fw-medium mb-1" style={{ fontSize: "0.9rem" }}>
+          Save systematically
         </h6>
 
         <p className="text-muted small mb-0">
-          Try to keep a portion of your income aside for savings.
+          Try to maintain a positive balance by setting aside savings first.
         </p>
 
       </div>

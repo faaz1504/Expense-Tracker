@@ -44,16 +44,16 @@ function AdminDashboard() {
         {/* HEADER */}
 
         <div className="mb-4">
-          <p className="text-muted mb-1">
-            ADMIN PANEL
+          <p className="text-muted small mb-1">
+            Admin Panel
           </p>
 
-          <h2 className="fw-bold">
-            Admin Dashboard
-          </h2>
+          <h3 className="fw-semibold mb-1">
+            Dashboard
+          </h3>
 
-          <p className="text-muted">
-            Monitor users and application activity.
+          <p className="text-muted small mb-0">
+            Monitor users and application activity
           </p>
         </div>
 
@@ -64,20 +64,20 @@ function AdminDashboard() {
 
           <Col md={4}>
 
-            <Card className="border-0 shadow-sm h-100">
+            <Card className="border shadow-sm h-100">
 
-              <Card.Body>
+              <Card.Body className="p-3">
 
-                <p className="text-muted mb-2">
+                <p className="text-muted small mb-1 fw-medium">
                   Total Users
                 </p>
 
-                <h2 className="fw-bold">
+                <h3 className="fw-semibold mb-1">
                   {normalUsers.length}
-                </h2>
+                </h3>
 
                 <small className="text-muted">
-                  Registered users
+                  Registered accounts
                 </small>
 
               </Card.Body>
@@ -89,17 +89,17 @@ function AdminDashboard() {
 
           <Col md={4}>
 
-            <Card className="border-0 shadow-sm h-100">
+            <Card className="border shadow-sm h-100">
 
-              <Card.Body>
+              <Card.Body className="p-3">
 
-                <p className="text-muted mb-2">
+                <p className="text-muted small mb-1 fw-medium">
                   Total Transactions
                 </p>
 
-                <h2 className="fw-bold">
+                <h3 className="fw-semibold mb-1">
                   {transactions.length}
-                </h2>
+                </h3>
 
                 <small className="text-muted">
                   All transactions
@@ -114,20 +114,20 @@ function AdminDashboard() {
 
           <Col md={4}>
 
-            <Card className="border-0 shadow-sm h-100">
+            <Card className="border shadow-sm h-100">
 
-              <Card.Body>
+              <Card.Body className="p-3">
 
-                <p className="text-muted mb-2">
+                <p className="text-muted small mb-1 fw-medium">
                   Active Users
                 </p>
 
-                <h2 className="fw-bold">
+                <h3 className="fw-semibold text-success mb-1">
                   {activeUsers.length}
-                </h2>
+                </h3>
 
                 <small className="text-muted">
-                  Currently active accounts
+                  Currently active
                 </small>
 
               </Card.Body>
@@ -141,7 +141,7 @@ function AdminDashboard() {
 
         {/* USERS TABLE */}
 
-        <Card className="border-0 shadow-sm">
+        <Card className="border shadow-sm">
 
           <Card.Body>
 

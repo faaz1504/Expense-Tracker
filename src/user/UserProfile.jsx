@@ -69,69 +69,70 @@ function UserProfile(){
 
         <Col xs={11} sm={8} md={6} lg={4}>
 
-          <Card className="border-0 shadow-sm">
+          <Card className="border shadow-sm">
 
             <Card.Body className="p-4 text-center">
 
               <div
-                className="rounded-circle bg-primary text-white d-flex justify-content-center align-items-center mx-auto mb-3"
+                className="rounded-circle d-flex justify-content-center align-items-center mx-auto mb-3"
                 style={{
-                  width: "80px",
-                  height: "80px",
-                  fontSize: "30px"
+                  width: "88px",
+                  height: "88px",
+                  border: "1px solid #e4e4e7",
+                  padding: "2px",
+                  backgroundColor: "#ffffff"
                 }}
               >
                 <img
                 src="https://images.unsplash.com/photo-1740252117044-2af197eea287?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHByb2ZpbGUlMjBpY29ufGVufDB8fDB8fHww"
                 alt="profile"
-                className="rounded-circle mb-3"
+                className="rounded-circle"
                 style={{
-                  width: "130px",
-                  height: "100px",
+                  width: "80px",
+                  height: "80px",
                   objectFit: "cover"
                 }}
               />
               </div>
 
-              <h3>{user.name}</h3>
+              <h4 className="fw-semibold mb-1">{user.name}</h4>
 
-              <p className="text-muted">
-                Manage your account information
+              <p className="text-muted small mb-3">
+                {user.email}
               </p>
 
-              <hr />
+              <hr className="my-3" />
 
-              <div className="text-start">
+              <div className="text-start mb-3">
 
-                <p>
-                  <strong>
-                    name:
-                  </strong>
-                  {" "}
+                <div className="mb-3">
+                  <span className="text-muted small d-block mb-1">
+                    Name
+                  </span>
                   {editing ? (
 
                     <Form.Control
+                    size="sm"
                     type="text"
                     value={name}
                     onChange={(e)=> setName(e.target.value)}
-                    className="mt-2"
+                    className="mt-1"
                     />
 
 
                   ):(
 
-                    user.name
+                    <span className="fw-medium">{user.name}</span>
 
                   )}
-                </p>
+                </div>
 
-                <p>
-                  <strong>Email:</strong> {user.email}
-                </p>
-
-                {/* <p>
-                  <strong>Role:</strong> {user.role}
-                </p> */}
+                <div>
+                  <span className="text-muted small d-block mb-1">
+                    Email
+                  </span>
+                  <span className="fw-medium">{user.email}</span>
+                </div>
 
               </div>
                 

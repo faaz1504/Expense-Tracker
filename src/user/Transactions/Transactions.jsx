@@ -77,12 +77,12 @@ function Transactions() {
         <Row className="align-items-center mb-4">
 
           <Col md={8}>
-            <h2 className="fw-bold">
+            <h3 className="fw-semibold mb-1">
               Transactions
-            </h2>
+            </h3>
 
-            <p className="text-muted mb-0">
-              View and manage all your income and expenses.
+            <p className="text-muted mb-0 small">
+              View and manage your income and expenses
             </p>
           </Col>
 
@@ -104,9 +104,9 @@ function Transactions() {
 
         {/* SEARCH AND FILTER */}
 
-        <Card className="border-0 shadow-sm mb-4">
+        <Card className="border shadow-sm mb-4">
 
-          <Card.Body>
+          <Card.Body className="p-3">
 
             <Row className="g-3">
 
@@ -128,7 +128,7 @@ function Transactions() {
                 <Form.Select
                 value={typeFilter}
                 onChange={(e) => setTypeFilter(e.target.value)}>
-                  <option value={"all"}>All</option>
+                  <option value={"all"}>All Types</option>
                   <option value={"income"}>Income</option>
                   <option value={"expense"}>Expense</option>
                 </Form.Select>
@@ -148,7 +148,7 @@ function Transactions() {
                   <option value={"rent"}>Rent</option>
                   <option value={"salary"}>Salary</option>
                   <option value={"bills"}>Bills</option>
-                  <option value={"health"}>health</option>
+                  <option value={"health"}>Health</option>
                   <option value={"other"}>Other</option>
                 </Form.Select>
 
@@ -163,7 +163,7 @@ function Transactions() {
 
         {/* TRANSACTION TABLE */}
 
-        <Card className="border-0 shadow-sm">
+        <Card className="border shadow-sm">
 
           <Card.Body>
 

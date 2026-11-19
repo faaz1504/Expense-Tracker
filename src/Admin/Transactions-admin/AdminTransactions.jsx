@@ -46,20 +46,20 @@ function AdminTransactions(){
 
       <div className="mb-4">
 
-        <h2 className="fw-bold mb-1">
+        <h3 className="fw-semibold mb-1">
           Transactions
-        </h2>
+        </h3>
 
-        <p className="text-muted mb-0">
-          View all user transactions
+        <p className="text-muted small mb-0">
+          View all transactions across all user accounts
         </p>
 
       </div>
 
 
-      <Card className="border-0 shadow-sm rounded-4">
+      <Card className="border shadow-sm">
 
-        <Card.Header className="bg-white border-0 py-3">
+        <Card.Header className="bg-white border-bottom py-3">
 
           <Row className="g-3 align-items-center">
 

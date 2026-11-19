@@ -18,9 +18,9 @@ function PublicNavbar() {
         <Navbar.Brand
           as={Link}
           to="/"
-          className="fw-bold fs-4"
+          className="fw-bold fs-5 d-flex align-items-center"
         >
-          EXpensoo
+          <span style={{ letterSpacing: "-0.03em" }}>EXpensoo</span>
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="public-navbar" />

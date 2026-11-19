@@ -1,28 +1,33 @@
 .footer {
-  background-color: #212529;
-  color: white;
-  padding-top: 45px;
+  background-color: #18181b;
+  color: #a1a1aa;
+  padding-top: 50px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.9rem;
 }
 
 .footer-container {
   display: flex;
   justify-content: space-between;
   gap: 40px;
-  padding: 0 10% 35px;
+  padding: 0 10% 40px;
 }
 
 .footer-about {
-  max-width: 350px;
+  max-width: 340px;
 }
 
 .footer-about h3 {
-  font-size: 26px;
-  margin-bottom: 15px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin-bottom: 12px;
 }
 
 .footer-about p {
-  color: #bbb;
-  line-height: 1.7;
+  color: #a1a1aa;
+  line-height: 1.6;
 }
 
 .footer-links {
@@ -33,47 +38,52 @@
 
 .footer-links h4,
 .footer-contact h4 {
-  margin-bottom: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin-bottom: 12px;
 }
 
 .footer-links a {
-  color: #bbb;
+  color: #a1a1aa;
   text-decoration: none;
+  transition: color 0.15s ease;
 }
 
 .footer-links a:hover {
-  color: white;
+  color: #ffffff;
 }
 
 .footer-contact p {
-  color: #bbb;
-  margin-bottom: 8px;
+  color: #a1a1aa;
+  margin-bottom: 6px;
 }
 
 .footer-bottom {
-  border-top: 1px solid #444;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
   text-align: center;
-  padding: 18px;
+  padding: 20px;
+  font-size: 0.8rem;
+  color: #71717a;
 }
 
 .footer-bottom p {
   margin: 0;
-  color: #aaa;
 }
-
 
 /* Responsive */
 
 @media (max-width: 768px) {
-
   .footer-container {
     flex-direction: column;
     text-align: center;
     align-items: center;
+    gap: 24px;
   }
 
   .footer-about {
-    max-width: 500px;
+    max-width: 480px;
   }
-
 }

@@ -33,10 +33,16 @@ function AdminNavbar() {
 
         <Navbar.Brand
           as={Link}
-          to="/admin-dashboard"
-          className="fw-bold"
+          to="/AdminDashboard"
+          className="fw-bold fs-5 d-flex align-items-center gap-2"
         >
-          EXpensoo Admin
+          <span style={{ letterSpacing: "-0.03em" }}>EXpensoo</span>
+          <span
+            className="badge bg-secondary text-uppercase"
+            style={{ fontSize: "0.65rem", padding: "0.2rem 0.5rem" }}
+          >
+            Admin
+          </span>
         </Navbar.Brand>
 
         <Button
