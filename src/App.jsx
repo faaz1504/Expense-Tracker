@@ -18,9 +18,12 @@ import AdminDashboard from "./Admin/AdminDashboard";
 import PublicLayout from "./components/PublicLayout";
 import About from "./pages/About";
 import PageNotFound from "./pages/PageNotFound";
-import ViewUsers from "./Admin/users/ViewUsers"
-import AdminTransactions from "./Admin/transactions/AdminTransactions";
+
+
 import AdminProfile from "./Admin/AdminProfile";
+import AdminTransactions from "./Admin/Transactions-admin/AdminTransactions";
+import ViewUsers from "./Admin/Users-admin/viewUsers";
+
 
 
 function App(){
