@@ -1,0 +1,521 @@
+/* ==========================================================================
+   EXpensoo User Transactions — Premium Fintech Page Styles
+   ========================================================================== */
+
+.tx-page {
+  background-color: #fafafa;
+  min-height: 100vh;
+  padding-bottom: 60px;
+}
+
+/* Header Section */
+.tx-header-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #09090b;
+  margin-bottom: 4px;
+}
+
+.tx-header-subtitle {
+  color: #71717a;
+  font-size: 0.92rem;
+  margin-bottom: 0;
+}
+
+/* Controls Card */
+.tx-controls-card {
+  background-color: #ffffff;
+  border: 1px solid #e4e4e7;
+  border-radius: 16px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04);
+  padding: 16px 20px;
+  margin-bottom: 24px;
+}
+
+/* Search Bar */
+.tx-search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.tx-search-icon {
+  position: absolute;
+  left: 14px;
+  color: #a1a1aa;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tx-search-input {
+  width: 100%;
+  padding: 9px 38px 9px 40px;
+  font-size: 0.88rem;
+  font-family: inherit;
+  background-color: #f4f4f5;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  color: #09090b;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.tx-search-input::placeholder {
+  color: #a1a1aa;
+}
+
+.tx-search-input:focus {
+  background-color: #ffffff;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.tx-search-clear {
+  position: absolute;
+  right: 10px;
+  background: transparent;
+  border: none;
+  color: #a1a1aa;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.tx-search-clear:hover {
+  color: #09090b;
+  background-color: #e4e4e7;
+}
+
+/* Segmented Type Pill Control */
+.tx-segmented-control {
+  display: inline-flex;
+  background-color: #f4f4f5;
+  border-radius: 10px;
+  padding: 3px;
+  border: 1px solid #e4e4e7;
+}
+
+.tx-segmented-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 16px;
+  font-size: 0.825rem;
+  font-weight: 500;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  color: #52525b;
+  cursor: pointer;
+  white-space: nowrap;
+  user-select: none;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tx-segmented-btn:hover:not(.active) {
+  color: #09090b;
+}
+
+.tx-segmented-btn.active {
+  background-color: #2563eb !important;
+  color: #ffffff !important;
+  font-weight: 600;
+  box-shadow: 0 1px 3px rgba(37, 99, 235, 0.25);
+}
+
+/* Date Filter Button & Dropdown */
+.tx-date-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  font-size: 0.825rem;
+  font-weight: 500;
+  border: 1px solid #e4e4e7;
+  background-color: #f4f4f5;
+  border-radius: 10px;
+  color: #52525b;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.tx-date-btn:hover {
+  background-color: #e4e4e7;
+  color: #09090b;
+  border-color: #d4d4d8;
+}
+
+.tx-date-btn.active {
+  background-color: #eff6ff;
+  border-color: #bfdbfe;
+  color: #2563eb;
+  font-weight: 600;
+}
+
+.tx-date-panel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 12px;
+  margin-top: 12px;
+  border-top: 1px solid #f4f4f5;
+  flex-wrap: wrap;
+}
+
+.tx-date-picker {
+  padding: 6px 12px;
+  font-size: 0.825rem;
+  border: 1px solid #d4d4d8;
+  border-radius: 8px;
+  outline: none;
+  color: #09090b;
+  background-color: #ffffff;
+  transition: border-color 0.15s ease;
+}
+
+.tx-date-picker:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+/* Category Filter Chips */
+.tx-category-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 4px 0 12px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.tx-category-row::-webkit-scrollbar {
+  display: none;
+}
+
+.tx-cat-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  border-radius: 9999px;
+  border: 1px solid #e4e4e7;
+  background-color: #ffffff;
+  color: #52525b;
+  cursor: pointer;
+  white-space: nowrap;
+  user-select: none;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tx-cat-chip:hover:not(.active) {
+  background-color: #f4f4f5;
+  color: #09090b;
+  border-color: #d4d4d8;
+}
+
+.tx-cat-chip.active {
+  background-color: #2563eb !important;
+  color: #ffffff !important;
+  border-color: #2563eb !important;
+  font-weight: 600;
+  box-shadow: 0 1px 3px rgba(37, 99, 235, 0.25);
+}
+
+/* Active Filter Summary Bar */
+.tx-active-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background-color: #f4f4f5;
+  border-radius: 8px;
+  margin-top: 10px;
+  font-size: 0.825rem;
+  color: #52525b;
+}
+
+.tx-clear-all-btn {
+  background: transparent;
+  border: none;
+  color: #2563eb;
+  font-weight: 600;
+  font-size: 0.825rem;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+  transition: background-color 0.15s ease;
+}
+
+.tx-clear-all-btn:hover {
+  background-color: rgba(37, 99, 235, 0.1);
+  text-decoration: underline;
+}
+
+/* Date Group Section */
+.tx-date-group {
+  margin-bottom: 24px;
+}
+
+.tx-date-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4px;
+  margin-bottom: 8px;
+}
+
+.tx-date-title {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #71717a;
+}
+
+.tx-date-count {
+  font-size: 0.78rem;
+  color: #a1a1aa;
+}
+
+/* Group Card Surface */
+.tx-group-card {
+  background-color: #ffffff;
+  border: 1px solid #e4e4e7;
+  border-radius: 16px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.03);
+  overflow: hidden;
+}
+
+/* Transaction Row Item */
+.tx-row-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-bottom: 1px solid #f4f4f5;
+  transition: background-color 0.15s ease;
+}
+
+.tx-row-item:last-child {
+  border-bottom: none;
+}
+
+.tx-row-item:hover {
+  background-color: #fafafa;
+}
+
+/* Left Content */
+.tx-item-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+  flex: 1;
+}
+
+.tx-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.tx-item-info {
+  min-width: 0;
+}
+
+.tx-item-title {
+  font-size: 0.93rem;
+  font-weight: 600;
+  color: #09090b;
+  margin-bottom: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tx-item-meta {
+  font-size: 0.8rem;
+  color: #71717a;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.tx-meta-badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 9999px;
+  text-transform: capitalize;
+}
+
+.tx-meta-badge.income {
+  background-color: #f0fdf4;
+  color: #16a34a;
+  border: 1px solid #bbf7d0;
+}
+
+.tx-meta-badge.expense {
+  background-color: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+}
+
+/* Right Content */
+.tx-item-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+  margin-left: 12px;
+}
+
+.tx-amount {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.tx-amount.income {
+  color: #16a34a;
+}
+
+.tx-amount.expense {
+  color: #dc2626;
+}
+
+/* Action Buttons */
+.tx-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tx-action-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid #e4e4e7;
+  background-color: #ffffff;
+  color: #71717a;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.15s ease;
+  padding: 0;
+}
+
+.tx-action-btn.edit:hover {
+  background-color: #eff6ff;
+  border-color: #bfdbfe;
+  color: #2563eb;
+}
+
+.tx-action-btn.delete:hover {
+  background-color: #fef2f2;
+  border-color: #fecaca;
+  color: #dc2626;
+}
+
+/* Empty State Card */
+.tx-empty-card {
+  background-color: #ffffff;
+  border: 1px solid #e4e4e7;
+  border-radius: 16px;
+  padding: 60px 24px;
+  text-align: center;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.03);
+}
+
+.tx-empty-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: #f4f4f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  color: #a1a1aa;
+}
+
+.tx-empty-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #09090b;
+  margin-bottom: 6px;
+}
+
+.tx-empty-desc {
+  font-size: 0.88rem;
+  color: #71717a;
+  max-width: 380px;
+  margin: 0 auto 20px;
+}
+
+/* Responsive Overrides */
+@media (max-width: 768px) {
+  .tx-controls-card {
+    padding: 14px;
+  }
+
+  .tx-row-item {
+    padding: 12px 14px;
+  }
+
+  .tx-icon-box {
+    width: 38px;
+    height: 38px;
+    font-size: 1.1rem;
+  }
+
+  .tx-amount {
+    font-size: 0.98rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .tx-row-item {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .tx-item-right {
+    margin-left: 0;
+    justify-content: space-between;
+    padding-top: 8px;
+    border-top: 1px dashed #f4f4f5;
+  }
+
+  .tx-segmented-control {
+    width: 100%;
+  }
+
+  .tx-segmented-btn {
+    flex: 1;
+  }
+}

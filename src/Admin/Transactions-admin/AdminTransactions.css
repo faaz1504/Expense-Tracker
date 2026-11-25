@@ -1,0 +1,524 @@
+/* ==========================================================================
+   EXpensoo Admin Transactions — Premium Fintech Admin Dashboard Styles
+   ========================================================================== */
+
+.admin-tx-page {
+  background-color: transparent;
+  padding-bottom: 40px;
+}
+
+/* Header Section */
+.admin-tx-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #09090b;
+  margin-bottom: 4px;
+}
+
+.admin-tx-subtitle {
+  color: #71717a;
+  font-size: 0.92rem;
+  margin-bottom: 0;
+}
+
+/* Summary Stat Cards */
+.admin-stat-card {
+  background-color: #ffffff;
+  border: 1px solid #e4e4e7;
+  border-radius: 14px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04);
+  padding: 18px 20px;
+  transition: border-color 0.15s ease;
+  height: 100%;
+}
+
+.admin-stat-card:hover {
+  border-color: #d4d4d8;
+}
+
+.admin-stat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.admin-stat-label {
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: #71717a;
+  letter-spacing: -0.01em;
+  margin-bottom: 0;
+}
+
+.admin-stat-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-stat-icon.total {
+  background-color: #eff6ff;
+  color: #2563eb;
+}
+
+.admin-stat-icon.income {
+  background-color: #f0fdf4;
+  color: #16a34a;
+}
+
+.admin-stat-icon.expense {
+  background-color: #fef2f2;
+  color: #dc2626;
+}
+
+.admin-stat-val {
+  font-size: 1.65rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #09090b;
+  margin-bottom: 2px;
+}
+
+.admin-stat-sub {
+  font-size: 0.78rem;
+  color: #a1a1aa;
+}
+
+/* Controls Card */
+.admin-controls-card {
+  background-color: #ffffff;
+  border: 1px solid #e4e4e7;
+  border-radius: 16px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04);
+  padding: 16px 20px;
+  margin-bottom: 22px;
+}
+
+/* Search Bar */
+.admin-search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.admin-search-icon {
+  position: absolute;
+  left: 14px;
+  color: #a1a1aa;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-search-input {
+  width: 100%;
+  padding: 9px 38px 9px 40px;
+  font-size: 0.88rem;
+  font-family: inherit;
+  background-color: #f4f4f5;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  color: #09090b;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.admin-search-input::placeholder {
+  color: #a1a1aa;
+}
+
+.admin-search-input:focus {
+  background-color: #ffffff;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.admin-search-clear {
+  position: absolute;
+  right: 10px;
+  background: transparent;
+  border: none;
+  color: #a1a1aa;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.admin-search-clear:hover {
+  color: #09090b;
+  background-color: #e4e4e7;
+}
+
+/* Segmented Type Control */
+.admin-segmented-control {
+  display: inline-flex;
+  background-color: #f4f4f5;
+  border-radius: 10px;
+  padding: 3px;
+  border: 1px solid #e4e4e7;
+}
+
+.admin-segmented-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 16px;
+  font-size: 0.825rem;
+  font-weight: 500;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  color: #52525b;
+  cursor: pointer;
+  white-space: nowrap;
+  user-select: none;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.admin-segmented-btn:hover:not(.active) {
+  color: #09090b;
+}
+
+.admin-segmented-btn.active {
+  background-color: #2563eb !important;
+  color: #ffffff !important;
+  font-weight: 600;
+  box-shadow: 0 1px 3px rgba(37, 99, 235, 0.25);
+}
+
+/* Date Filter Button & Panel */
+.admin-date-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  font-size: 0.825rem;
+  font-weight: 500;
+  border: 1px solid #e4e4e7;
+  background-color: #f4f4f5;
+  border-radius: 10px;
+  color: #52525b;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.admin-date-btn:hover {
+  background-color: #e4e4e7;
+  color: #09090b;
+  border-color: #d4d4d8;
+}
+
+.admin-date-btn.active {
+  background-color: #eff6ff;
+  border-color: #bfdbfe;
+  color: #2563eb;
+  font-weight: 600;
+}
+
+.admin-date-panel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 12px;
+  margin-top: 12px;
+  border-top: 1px solid #f4f4f5;
+  flex-wrap: wrap;
+}
+
+.admin-date-picker {
+  padding: 6px 12px;
+  font-size: 0.825rem;
+  border: 1px solid #d4d4d8;
+  border-radius: 8px;
+  outline: none;
+  color: #09090b;
+  background-color: #ffffff;
+  transition: border-color 0.15s ease;
+}
+
+.admin-date-picker:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+/* Category Filter Chips */
+.admin-category-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 4px 0 12px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.admin-category-row::-webkit-scrollbar {
+  display: none;
+}
+
+.admin-cat-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  border-radius: 9999px;
+  border: 1px solid #e4e4e7;
+  background-color: #ffffff;
+  color: #52525b;
+  cursor: pointer;
+  white-space: nowrap;
+  user-select: none;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.admin-cat-chip:hover:not(.active) {
+  background-color: #f4f4f5;
+  color: #09090b;
+  border-color: #d4d4d8;
+}
+
+.admin-cat-chip.active {
+  background-color: #2563eb !important;
+  color: #ffffff !important;
+  border-color: #2563eb !important;
+  font-weight: 600;
+  box-shadow: 0 1px 3px rgba(37, 99, 235, 0.25);
+}
+
+/* Active Filters Summary Bar */
+.admin-active-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background-color: #f4f4f5;
+  border-radius: 8px;
+  margin-top: 10px;
+  font-size: 0.825rem;
+  color: #52525b;
+}
+
+.admin-clear-all-btn {
+  background: transparent;
+  border: none;
+  color: #2563eb;
+  font-weight: 600;
+  font-size: 0.825rem;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+  transition: background-color 0.15s ease;
+}
+
+.admin-clear-all-btn:hover {
+  background-color: rgba(37, 99, 235, 0.1);
+  text-decoration: underline;
+}
+
+/* Date Group Section */
+.admin-tx-date-group {
+  margin-bottom: 24px;
+}
+
+.admin-tx-date-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4px;
+  margin-bottom: 8px;
+}
+
+.admin-tx-date-title {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #71717a;
+}
+
+/* Desktop Table Styles */
+.admin-tx-table-card {
+  background-color: #ffffff;
+  border: 1px solid #e4e4e7;
+  border-radius: 14px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.03);
+  overflow: hidden;
+}
+
+.admin-tx-table {
+  width: 100%;
+  margin-bottom: 0;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.admin-tx-table th {
+  background-color: #f9fafb !important;
+  color: #71717a !important;
+  font-size: 0.78rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase !important;
+  padding: 12px 18px !important;
+  border-bottom: 1px solid #e4e4e7 !important;
+}
+
+.admin-tx-table td {
+  padding: 14px 18px !important;
+  border-bottom: 1px solid #f4f4f5 !important;
+  vertical-align: middle;
+  font-size: 0.88rem;
+}
+
+.admin-tx-table tr:last-child td {
+  border-bottom: none !important;
+}
+
+.admin-tx-table tr:hover td {
+  background-color: #fafafa !important;
+}
+
+/* Category Icon Box */
+.admin-icon-box {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  flex-shrink: 0;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+/* User Email Pill */
+.admin-user-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.8125rem;
+  color: #52525b;
+  background-color: #f4f4f5;
+  padding: 3px 10px;
+  border-radius: 6px;
+  border: 1px solid #e4e4e7;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Amounts */
+.admin-amount {
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: -0.01em;
+}
+
+.admin-amount.income {
+  color: #16a34a;
+}
+
+.admin-amount.expense {
+  color: #dc2626;
+}
+
+/* Mobile Transaction Cards */
+.admin-mobile-card {
+  background-color: #ffffff;
+  border: 1px solid #e4e4e7;
+  border-radius: 14px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.03);
+  overflow: hidden;
+}
+
+.admin-mobile-item {
+  padding: 14px 16px;
+  border-bottom: 1px solid #f4f4f5;
+  transition: background-color 0.15s ease;
+}
+
+.admin-mobile-item:last-child {
+  border-bottom: none;
+}
+
+.admin-mobile-item:hover {
+  background-color: #fafafa;
+}
+
+.admin-mobile-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed #f4f4f5;
+  font-size: 0.78rem;
+  color: #71717a;
+  flex-wrap: wrap;
+}
+
+/* Empty State Card */
+.admin-empty-card {
+  background-color: #ffffff;
+  border: 1px solid #e4e4e7;
+  border-radius: 16px;
+  padding: 60px 24px;
+  text-align: center;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.03);
+}
+
+.admin-empty-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: #f4f4f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  color: #a1a1aa;
+}
+
+.admin-empty-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #09090b;
+  margin-bottom: 6px;
+}
+
+.admin-empty-desc {
+  font-size: 0.88rem;
+  color: #71717a;
+  max-width: 380px;
+  margin: 0 auto 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .admin-controls-card {
+    padding: 14px;
+  }
+
+  .admin-segmented-control {
+    width: 100%;
+  }
+
+  .admin-segmented-btn {
+    flex: 1;
+  }
+}

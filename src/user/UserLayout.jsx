@@ -10,7 +10,7 @@ function UserLayout(){
     )
 
     if(!user){
-        return <Navigate to="/sign-in"/> 
+        return <Navigate to="/"/> 
     }
 
     if(user.role !== "user"){

@@ -2,9 +2,25 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import {
-  Container,Row,Col,Card,Button,Badge,Form
+  Container,Row,Col,Card,Button,Badge
 } from "react-bootstrap";
 import { useState } from "react";
+
+const MONTH_OPTIONS = [
+  { label: "All", value: "all" },
+  { label: "Jan", value: "0" },
+  { label: "Feb", value: "1" },
+  { label: "Mar", value: "2" },
+  { label: "Apr", value: "3" },
+  { label: "May", value: "4" },
+  { label: "Jun", value: "5" },
+  { label: "Jul", value: "6" },
+  { label: "Aug", value: "7" },
+  { label: "Sep", value: "8" },
+  { label: "Oct", value: "9" },
+  { label: "Nov", value: "10" },
+  { label: "Dec", value: "11" },
+];
 
 
 function UserDashboard() {
@@ -22,24 +38,35 @@ function UserDashboard() {
       transaction.userEmail === user?.email
   );
 
-const currentDate = new Date();
+  const currentDate = new Date();
 
-  const [selectedMonth,setselectedMonth] = useState(currentDate.getMonth());
-
-  // const currentMonth = currentDate.getMonth();
+  const [selectedMonth, setselectedMonth] = useState("all");
 
   const currentYear = currentDate.getFullYear();
 
-    const monthlyTransactions = userTransactions.filter((transaction) =>{
+  const monthlyTransactions = userTransactions.filter((transaction) => {
+    if (selectedMonth === "all") {
+      return true;
+    }
+
+    if (!transaction.date) return false;
+
+    const dateParts = String(transaction.date).split("-");
+    if (dateParts.length >= 2) {
+      const tYear = Number(dateParts[0]);
+      const tMonth = Number(dateParts[1]) - 1;
+      return (
+        tMonth === Number(selectedMonth) &&
+        (isNaN(tYear) || tYear === currentYear)
+      );
+    }
 
     const transactionDate = new Date(transaction.date);
-
-    return (transactionDate.getMonth() === Number(selectedMonth) &&
-            transactionDate.getFullYear() === currentYear 
-          );
-
-
-  })
+    return (
+      transactionDate.getMonth() === Number(selectedMonth) &&
+      transactionDate.getFullYear() === currentYear
+    );
+  });
 
 
   
@@ -130,6 +157,43 @@ const currentDate = new Date();
 
 
 
+        {/* MONTH FILTER PILLS */}
+
+        <div className="mb-4">
+
+          <div
+            className="month-pill-container"
+            role="tablist"
+            aria-label="Filter transactions by month"
+          >
+
+            {MONTH_OPTIONS.map((month) => {
+
+              const isSelected = selectedMonth === month.value;
+
+              return (
+
+                <button
+                  key={month.value}
+                  type="button"
+                  role="tab"
+                  aria-selected={isSelected}
+                  className={`month-pill-btn ${isSelected ? "active" : ""}`}
+                  onClick={() => setselectedMonth(month.value)}
+                >
+                  {month.label}
+                </button>
+
+              );
+
+            })}
+
+          </div>
+
+        </div>
+
+
+
         {/* SUMMARY CARDS */}
 
         <Row className="g-3 mb-4">
@@ -180,7 +244,7 @@ const currentDate = new Date();
                 </h3>
 
                 <small className="text-muted">
-                  This month
+                  {selectedMonth === "all" ? "All time" : "This month"}
                 </small>
 
               </Card.Body>
@@ -208,7 +272,7 @@ const currentDate = new Date();
                 </h3>
 
                 <small className="text-muted">
-                  This month
+                  {selectedMonth === "all" ? "All time" : "This month"}
                 </small>
 
               </Card.Body>
@@ -236,7 +300,7 @@ const currentDate = new Date();
                 </h3>
 
                 <small className="text-muted">
-                  Total entries
+                  {selectedMonth === "all" ? "Total entries" : "This month"}
                 </small>
 
               </Card.Body>
@@ -270,30 +334,6 @@ const currentDate = new Date();
                   <h5 className="fw-semibold mb-0">
                     Recent Transactions
                   </h5>
-                
-                <div  className="d-flex align-items-center gap-2">
-
-                   <Form.Select
-                  size="sm"
-                  value={selectedMonth}
-                  onChange={(e) => setselectedMonth(e.target.value)}
-                  style={{ width: "auto" }}
-                  >
-                    <option value="0">January</option>
-                    <option value="1">February</option>
-                    <option value="2">March</option>
-                    <option value="3">April</option>
-                    <option value="4">May</option>
-                    <option value="5">June</option>
-                    <option value="6">July</option>
-                    <option value="7">August</option>
-                    <option value="8">September</option>
-                    <option value="9">October</option>
-                    <option value="10">November</option>
-                    <option value="11">December</option>
-                  </Form.Select>
-
-              </div>
 
                   <Link
                     to="/user-transactions"

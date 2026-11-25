@@ -1,0 +1,476 @@
+/* ==========================================================================
+   EXpensoo Admin Dashboard — Premium Fintech SaaS Dashboard Styles
+   ========================================================================== */
+
+.admin-dash-page {
+  padding-bottom: 50px;
+}
+
+/* Header Section */
+.admin-welcome-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.admin-welcome-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #09090b;
+  margin-bottom: 4px;
+}
+
+.admin-welcome-sub {
+  color: #71717a;
+  font-size: 0.92rem;
+  margin-bottom: 0;
+}
+
+.admin-date-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #ffffff;
+  border: 1px solid #e4e4e7;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  font-size: 0.84rem;
+  font-weight: 500;
+  color: #52525b;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+}
+
+/* Four Stat Cards */
+.admin-dash-stat-card {
+  background-color: #ffffff;
+  border: 1px solid #e4e4e7;
+  border-radius: 16px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04);
+  padding: 20px;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+  height: 100%;
+}
+
+.admin-dash-stat-card:hover {
+  transform: translateY(-2px);
+  border-color: #d4d4d8;
+  box-shadow: 0 6px 16px -2px rgba(0, 0, 0, 0.06);
+}
+
+.admin-dash-stat-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.admin-dash-stat-label {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: #71717a;
+  margin-bottom: 0;
+}
+
+.admin-dash-icon-box {
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-dash-icon-box.users {
+  background-color: #eff6ff;
+  color: #2563eb;
+}
+
+.admin-dash-icon-box.tx {
+  background-color: #f5f3ff;
+  color: #7c3aed;
+}
+
+.admin-dash-icon-box.income {
+  background-color: #f0fdf4;
+  color: #16a34a;
+}
+
+.admin-dash-icon-box.expense {
+  background-color: #fef2f2;
+  color: #dc2626;
+}
+
+.admin-dash-stat-val {
+  font-size: 1.7rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #09090b;
+  margin-bottom: 3px;
+  line-height: 1.2;
+}
+
+.admin-dash-stat-sub {
+  font-size: 0.78rem;
+  color: #a1a1aa;
+}
+
+/* Chart Analytics Card */
+.admin-chart-card {
+  background-color: #ffffff;
+  border: 1px solid #e4e4e7;
+  border-radius: 16px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04);
+  padding: 22px 24px;
+  margin-bottom: 24px;
+}
+
+.admin-chart-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.admin-chart-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #09090b;
+  margin-bottom: 3px;
+}
+
+.admin-chart-subtitle {
+  font-size: 0.84rem;
+  color: #71717a;
+  margin-bottom: 0;
+}
+
+.admin-chart-legend {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.admin-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.825rem;
+  font-weight: 500;
+  color: #52525b;
+}
+
+.admin-legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+}
+
+.admin-legend-dot.income {
+  background-color: #16a34a;
+}
+
+.admin-legend-dot.expense {
+  background-color: #dc2626;
+}
+
+/* Custom Chart Container */
+.admin-chart-body {
+  position: relative;
+  height: 230px;
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  padding: 10px 0 24px;
+  border-bottom: 1px solid #f4f4f5;
+}
+
+.admin-chart-grid-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  border-top: 1px dashed #f4f4f5;
+  pointer-events: none;
+}
+
+.admin-chart-column {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.admin-chart-bars-wrap {
+  width: 100%;
+  max-width: 56px;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 6px;
+  position: relative;
+}
+
+.admin-chart-bar {
+  flex: 1;
+  max-width: 24px;
+  border-radius: 6px 6px 0 0;
+  transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.15s ease;
+  min-height: 4px;
+  position: relative;
+}
+
+.admin-chart-bar.income {
+  background: linear-gradient(180deg, #22c55e 0%, #16a34a 100%);
+}
+
+.admin-chart-bar.expense {
+  background: linear-gradient(180deg, #ef4444 0%, #dc2626 100%);
+}
+
+.admin-chart-column:hover .admin-chart-bar {
+  opacity: 0.85;
+}
+
+.admin-chart-month-label {
+  position: absolute;
+  bottom: -24px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #71717a;
+  text-align: center;
+}
+
+/* Chart Tooltip on Hover */
+.admin-chart-hover-info {
+  background-color: #f4f4f5;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #09090b;
+}
+
+/* Card Section Containers */
+.admin-section-card {
+  background-color: #ffffff;
+  border: 1px solid #e4e4e7;
+  border-radius: 16px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-section-header {
+  padding: 18px 22px;
+  border-bottom: 1px solid #f4f4f5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.admin-section-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #09090b;
+  margin-bottom: 0;
+}
+
+.admin-view-all-link {
+  font-size: 0.84rem;
+  font-weight: 500;
+  color: #2563eb;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.admin-view-all-link:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
+  transform: translateX(2px);
+}
+
+.admin-section-body {
+  padding: 0;
+  flex: 1;
+}
+
+/* Recent Transaction Item */
+.admin-dash-tx-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 22px;
+  border-bottom: 1px solid #f4f4f5;
+  transition: background-color 0.15s ease;
+}
+
+.admin-dash-tx-item:last-child {
+  border-bottom: none;
+}
+
+.admin-dash-tx-item:hover {
+  background-color: #fafafa;
+}
+
+.admin-dash-tx-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  flex: 1;
+}
+
+.admin-dash-icon-box-sm {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  flex-shrink: 0;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.admin-dash-tx-info {
+  min-width: 0;
+}
+
+.admin-dash-tx-title {
+  font-size: 0.91rem;
+  font-weight: 600;
+  color: #09090b;
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.admin-dash-tx-meta {
+  font-size: 0.78rem;
+  color: #71717a;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.admin-dash-tx-right {
+  text-align: right;
+  flex-shrink: 0;
+  margin-left: 12px;
+}
+
+.admin-dash-tx-amount {
+  font-size: 0.98rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.admin-dash-tx-amount.income {
+  color: #16a34a;
+}
+
+.admin-dash-tx-amount.expense {
+  color: #dc2626;
+}
+
+/* Recent User Item */
+.admin-dash-user-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 22px;
+  border-bottom: 1px solid #f4f4f5;
+  transition: background-color 0.15s ease;
+}
+
+.admin-dash-user-item:last-child {
+  border-bottom: none;
+}
+
+.admin-dash-user-item:hover {
+  background-color: #fafafa;
+}
+
+.admin-dash-user-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  flex: 1;
+}
+
+.admin-dash-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #eff6ff;
+  color: #2563eb;
+  font-weight: 700;
+  font-size: 0.92rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 1px solid #bfdbfe;
+}
+
+.admin-dash-user-name {
+  font-size: 0.91rem;
+  font-weight: 600;
+  color: #09090b;
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.admin-dash-user-email {
+  font-size: 0.78rem;
+  color: #71717a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Empty placeholder */
+.admin-dash-empty-box {
+  padding: 40px 20px;
+  text-align: center;
+  color: #a1a1aa;
+  font-size: 0.88rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .admin-welcome-box {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .admin-chart-bars-wrap {
+    max-width: 36px;
+    gap: 4px;
+  }
+
+  .admin-chart-bar {
+    max-width: 14px;
+  }
+}

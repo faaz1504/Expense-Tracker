@@ -29,7 +29,7 @@ function UserProfile(){
 
     dispatch(logout());
 
-    navigate('/sign-up');
+    navigate('/');
   }
 
   const [editing,setEditing] = useState(false);

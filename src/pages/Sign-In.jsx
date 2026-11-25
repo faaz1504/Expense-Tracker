@@ -1,5 +1,5 @@
 import { useFormik } from "formik";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, replace } from "react-router-dom";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { signIn } from "../redux/authSlice";
@@ -45,9 +45,9 @@ function SignIn() {
         dispatch(signIn(registeredUser));
 
         if (registeredUser.role === "admin") {
-          navigate("/AdminDashboard");
+          navigate("/AdminDashboard" , {replace:true});
         } else {
-          navigate("/user-dashboard");
+          navigate("/user-dashboard" , {replace:true});
         }
 
       } else {
